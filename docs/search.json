@@ -1,0 +1,100 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Practical Python Programming Book Club",
+    "section": "",
+    "text": "This is a companion for the book Practical Python Programming by David Beazley.\nThis website is being developed by the R4DS Online Learning Community. Follow along and join the community to participate.\nThis companion follows the R4DS Online Learning Community Code of Conduct."
+  },
+  {
+    "objectID": "index.html#book-club-meetings",
+    "href": "index.html#book-club-meetings",
+    "title": "Practical Python Programming Book Club",
+    "section": "Book club meetings",
+    "text": "Book club meetings\n\nEach week, a volunteer will present a chapter from the book.\n\nThis is the best way to learn the material.\n\nPresentations will usually consist of a review of the material, a discussion, and/or a demonstration of the principles presented in that chapter.\nMore information about how to present is available in the GitHub repo.\nPresentations will be recorded and will be available on the R4DS Online Learning Community YouTube Channel."
+  },
+  {
+    "objectID": "01_main.html",
+    "href": "01_main.html",
+    "title": "1. Introduction to Python",
+    "section": "",
+    "text": "Learning objective 1"
+  },
+  {
+    "objectID": "01_notes.html",
+    "href": "01_notes.html",
+    "title": "Notes",
+    "section": "",
+    "text": "[insert slides]"
+  },
+  {
+    "objectID": "01_notes.html#notes",
+    "href": "01_notes.html#notes",
+    "title": "Notes",
+    "section": "Notes",
+    "text": "Notes\n[insert notes]"
+  },
+  {
+    "objectID": "01_video.html",
+    "href": "01_video.html",
+    "title": "Video",
+    "section": "",
+    "text": "[insert video here]"
+  },
+  {
+    "objectID": "02_main.html",
+    "href": "02_main.html",
+    "title": "2. Working with Data",
+    "section": "",
+    "text": "Learning objective 1"
+  },
+  {
+    "objectID": "02_notes.html",
+    "href": "02_notes.html",
+    "title": "Notes",
+    "section": "",
+    "text": "[insert slides]"
+  },
+  {
+    "objectID": "02_notes.html#notes",
+    "href": "02_notes.html#notes",
+    "title": "Notes",
+    "section": "Notes",
+    "text": "Notes\n[insert notes]"
+  },
+  {
+    "objectID": "02_video.html",
+    "href": "02_video.html",
+    "title": "Video",
+    "section": "",
+    "text": "[insert video here]"
+  },
+  {
+    "objectID": "how-to.html",
+    "href": "how-to.html",
+    "title": "How to add to the book",
+    "section": "",
+    "text": "This book is made with Quarto. Please see the Get Started chapter of the Quarto documentation to learn how to install and run Quarto in your IDE."
+  },
+  {
+    "objectID": "how-to.html#add-to-book",
+    "href": "how-to.html#add-to-book",
+    "title": "How to add to the book",
+    "section": "Add to book",
+    "text": "Add to book\nOnce you have everything set up, forked the repo, and cloned to your computer, you can add a new chapter to the book:\n\nIn the _quarto.yml file, under chapters, add a part with your chapter like so:\n\n- part: 01_main.qmd\n      chapters: \n      - 01_notes.qmd\n      - 01_video.qmd\nCreate the corresponding .qmd files in the main directory. Write in your information using Markdown syntax."
+  },
+  {
+    "objectID": "how-to.html#render-the-book",
+    "href": "how-to.html#render-the-book",
+    "title": "How to add to the book",
+    "section": "Render the book",
+    "text": "Render the book\nOnce you have added and edited your files, don’t forget to render the book:\nquarto render"
+  },
+  {
+    "objectID": "how-to.html#push-up-to-github",
+    "href": "how-to.html#push-up-to-github",
+    "title": "How to add to the book",
+    "section": "Push up to GitHub",
+    "text": "Push up to GitHub\nPush your changes to your forked repo and then create a pull request for the R4DS admins to merge your changes."
+  }
+]

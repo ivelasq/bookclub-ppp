@@ -1,3 +1,9 @@
 # Notes {.unnumbered}
 
-[insert slides and notes here]
+## Slides
+
+[insert slides]
+
+## Notes
+
+[insert notes]

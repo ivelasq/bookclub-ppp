@@ -2,38 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://dabeaz-course.github.io/practical-python/index.html</loc>
-    <lastmod>2022-04-02T18:35:45.918Z</lastmod>
+    <lastmod>2022-04-02T19:11:54.918Z</lastmod>
   </url>
   <url>
     <loc>https://dabeaz-course.github.io/practical-python/01_main.html</loc>
-    <lastmod>2022-04-02T18:35:45.919Z</lastmod>
+    <lastmod>2022-04-02T19:11:54.919Z</lastmod>
   </url>
   <url>
     <loc>https://dabeaz-course.github.io/practical-python/01_notes.html</loc>
-    <lastmod>2022-04-02T18:35:45.920Z</lastmod>
+    <lastmod>2022-04-02T19:11:54.920Z</lastmod>
   </url>
   <url>
     <loc>https://dabeaz-course.github.io/practical-python/01_video.html</loc>
-    <lastmod>2022-04-02T18:35:45.922Z</lastmod>
+    <lastmod>2022-04-02T19:11:54.921Z</lastmod>
   </url>
   <url>
     <loc>https://dabeaz-course.github.io/practical-python/02_main.html</loc>
-    <lastmod>2022-04-02T18:35:45.924Z</lastmod>
+    <lastmod>2022-04-02T19:11:54.923Z</lastmod>
   </url>
   <url>
     <loc>https://dabeaz-course.github.io/practical-python/02_notes.html</loc>
-    <lastmod>2022-04-02T18:35:45.927Z</lastmod>
+    <lastmod>2022-04-02T19:11:54.926Z</lastmod>
   </url>
   <url>
     <loc>https://dabeaz-course.github.io/practical-python/02_video.html</loc>
-    <lastmod>2022-04-02T18:35:45.928Z</lastmod>
+    <lastmod>2022-04-02T19:11:54.936Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dabeaz-course.github.io/practical-python/examples.html</loc>
+    <lastmod>2022-04-02T19:11:54.939Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dabeaz-course.github.io/practical-python/example_quarto.html</loc>
+    <lastmod>2022-04-02T19:11:54.941Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dabeaz-course.github.io/practical-python/example_python.html</loc>
+    <lastmod>2022-04-02T19:11:54.951Z</lastmod>
   </url>
   <url>
     <loc>https://dabeaz-course.github.io/practical-python/how-to.html</loc>
-    <lastmod>2022-04-02T18:35:45.929Z</lastmod>
+    <lastmod>2022-04-02T19:11:54.964Z</lastmod>
   </url>
   <url>
     <loc>https://dabeaz-course.github.io/practical-python/Practical-Python-Programming-Book-Club.pdf</loc>
-    <lastmod>2022-04-02T18:35:45.610Z</lastmod>
+    <lastmod>2022-04-02T19:11:54.556Z</lastmod>
   </url>
 </urlset>

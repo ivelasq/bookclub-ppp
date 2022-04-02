@@ -70,6 +70,34 @@
     "text": "[insert video here]"
   },
   {
+    "objectID": "example_quarto.html",
+    "href": "example_quarto.html",
+    "title": "1  Example Quarto Document",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+  },
+  {
+    "objectID": "example_quarto.html#running-code",
+    "href": "example_quarto.html#running-code",
+    "title": "1  Example Quarto Document",
+    "section": "1.2 Running Code",
+    "text": "1.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n2\n\n\nYou can add options to executable code like this\n\n\n4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
+  },
+  {
+    "objectID": "example_python.html",
+    "href": "example_python.html",
+    "title": "2  Example Jupyter Notebook",
+    "section": "",
+    "text": "import numpy as np\na = np.arange(15).reshape(3, 5)\na\n\narray([[ 0,  1,  2,  3,  4],\n       [ 5,  6,  7,  8,  9],\n       [10, 11, 12, 13, 14]])"
+  },
+  {
+    "objectID": "example_python.html#matplotlib",
+    "href": "example_python.html#matplotlib",
+    "title": "2  Example Jupyter Notebook",
+    "section": "2.2 Matplotlib",
+    "text": "2.2 Matplotlib\n\nimport matplotlib.pyplot as plt\n\nfig = plt.figure()\nx = np.arange(10)\ny = 2.5 * np.sin(x / 20 * np.pi)\nyerr = np.linspace(0.05, 0.2, 10)\n\nplt.errorbar(x, y + 3, yerr=yerr, label='both limits (default)')\nplt.errorbar(x, y + 2, yerr=yerr, uplims=True, label='uplims=True')\nplt.errorbar(x, y + 1, yerr=yerr, uplims=True, lolims=True,\n             label='uplims=True, lolims=True')\n\nupperlimits = [True, False] * 5\nlowerlimits = [False, True] * 5\nplt.errorbar(x, y, yerr=yerr, uplims=upperlimits, lolims=lowerlimits,\n             label='subsets of uplims and lolims')\n\nplt.legend(loc='lower right')\nplt.show(fig)"
+  },
+  {
     "objectID": "how-to.html",
     "href": "how-to.html",
     "title": "How to add to the book",
@@ -81,7 +109,7 @@
     "href": "how-to.html#add-to-book",
     "title": "How to add to the book",
     "section": "Add to book",
-    "text": "Add to book\nOnce you have everything set up, forked the repo, and cloned to your computer, you can add a new chapter to the book:\n\nIn the _quarto.yml file, under chapters, add a part with your chapter like so:\n\n- part: 01_main.qmd\n      chapters: \n      - 01_notes.qmd\n      - 01_video.qmd\nCreate the corresponding .qmd files in the main directory. Write in your information using Markdown syntax."
+    "text": "Add to book\nOnce you have everything set up, forked the repo, and cloned to your computer, you can add a new chapter to the book:\n\nIn the _quarto.yml file, under chapters, add a part with your chapter like so:\n\n  - part: 01_main.qmd\n      chapters: \n      - 01_notes.qmd\n      - 01_video.qmd\nCreate the corresponding files in the main directory. You can use .qmd or .ipynb files that run computations if you would like, or just plain .md files. Check out the files under Examples to see how they are done."
   },
   {
     "objectID": "how-to.html#render-the-book",

@@ -22,6 +22,10 @@ book:
       chapters:
       - 02_notes.qmd
       - 02_video.qmd
+    - part: examples.md
+      chapters:
+      - example_quarto.qmd
+      - example_python.ipynb
   appendices:
       - how-to.qmd
  

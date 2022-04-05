@@ -2,62 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://dabeaz-course.github.io/practical-python/index.html</loc>
-    <lastmod>2022-04-05T13:42:42.454Z</lastmod>
+    <lastmod>2022-04-05T14:32:27.341Z</lastmod>
   </url>
   <url>
     <loc>https://dabeaz-course.github.io/practical-python/01_main.html</loc>
-    <lastmod>2022-04-02T19:11:54.919Z</lastmod>
+    <lastmod>2022-04-05T14:32:27.341Z</lastmod>
   </url>
   <url>
     <loc>https://dabeaz-course.github.io/practical-python/01_notes.html</loc>
-    <lastmod>2022-04-02T19:11:54.920Z</lastmod>
+    <lastmod>2022-04-05T14:32:27.342Z</lastmod>
   </url>
   <url>
     <loc>https://dabeaz-course.github.io/practical-python/01_video.html</loc>
-    <lastmod>2022-04-02T19:11:54.921Z</lastmod>
+    <lastmod>2022-04-05T14:32:27.342Z</lastmod>
   </url>
   <url>
     <loc>https://dabeaz-course.github.io/practical-python/02_main.html</loc>
-    <lastmod>2022-04-02T19:11:54.923Z</lastmod>
+    <lastmod>2022-04-05T14:32:27.343Z</lastmod>
   </url>
   <url>
     <loc>https://dabeaz-course.github.io/practical-python/02_notes.html</loc>
-    <lastmod>2022-04-02T19:11:54.926Z</lastmod>
+    <lastmod>2022-04-05T14:32:27.343Z</lastmod>
   </url>
   <url>
     <loc>https://dabeaz-course.github.io/practical-python/02_video.html</loc>
-    <lastmod>2022-04-02T19:11:54.936Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dabeaz-course.github.io/practical-python/examples.html</loc>
-    <lastmod>2022-04-05T13:42:42.455Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dabeaz-course.github.io/practical-python/example_quarto.html</loc>
-    <lastmod>2022-04-05T13:42:42.456Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dabeaz-course.github.io/practical-python/example_python.html</loc>
-    <lastmod>2022-04-05T13:42:42.457Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dabeaz-course.github.io/practical-python/how-to.html</loc>
-    <lastmod>2022-04-05T13:42:42.457Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dabeaz-course.github.io/practical-python/Practical-Python-Programming-Book-Club.pdf</loc>
-    <lastmod>2022-04-02T19:11:54.556Z</lastmod>
+    <lastmod>2022-04-05T14:32:27.344Z</lastmod>
   </url>
   <url>
     <loc>https://dabeaz-course.github.io/practical-python/03_main.html</loc>
-    <lastmod>2022-04-05T13:44:54.766Z</lastmod>
+    <lastmod>2022-04-05T14:32:27.344Z</lastmod>
   </url>
   <url>
     <loc>https://dabeaz-course.github.io/practical-python/03_notes.html</loc>
-    <lastmod>2022-04-05T13:44:54.767Z</lastmod>
+    <lastmod>2022-04-05T14:32:27.345Z</lastmod>
   </url>
   <url>
     <loc>https://dabeaz-course.github.io/practical-python/03_video.html</loc>
-    <lastmod>2022-04-05T13:44:54.767Z</lastmod>
+    <lastmod>2022-04-05T14:32:27.345Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dabeaz-course.github.io/practical-python/examples.html</loc>
+    <lastmod>2022-04-05T14:32:27.346Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dabeaz-course.github.io/practical-python/example_quarto.html</loc>
+    <lastmod>2022-04-05T14:32:27.346Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dabeaz-course.github.io/practical-python/example_python.html</loc>
+    <lastmod>2022-04-05T14:32:27.347Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dabeaz-course.github.io/practical-python/how-to.html</loc>
+    <lastmod>2022-04-05T14:32:27.348Z</lastmod>
   </url>
 </urlset>

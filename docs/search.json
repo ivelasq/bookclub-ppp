@@ -1,10 +1,10 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
+    "objectID": "index.html#welcome",
+    "href": "index.html#welcome",
     "title": "Practical Python Programming Book Club",
-    "section": "",
-    "text": "This is a companion for the book Practical Python Programming by David Beazley.\nThis website is being developed by the R4DS Online Learning Community. Follow along and join the community to participate.\nThis companion follows the R4DS Online Learning Community Code of Conduct."
+    "section": "Welcome",
+    "text": "Welcome\nThis is a companion for the book Practical Python Programming by David Beazley.\nThis website is being developed by the R4DS Online Learning Community. Follow along and join the community to participate.\nThis companion follows the R4DS Online Learning Community Code of Conduct."
   },
   {
     "objectID": "index.html#book-club-meetings",
@@ -14,18 +14,18 @@
     "text": "Book club meetings\n\nEach week, a volunteer will present a chapter from the book.\n\nThis is the best way to learn the material.\n\nPresentations will usually consist of a review of the material, a discussion, and/or a demonstration of the principles presented in that chapter.\nMore information about how to present is available in the GitHub repo.\nPresentations will be recorded and will be available on the R4DS Online Learning Community YouTube Channel."
   },
   {
-    "objectID": "01_main.html",
-    "href": "01_main.html",
+    "objectID": "01_main.html#learning-objectives",
+    "href": "01_main.html#learning-objectives",
     "title": "1. Introduction to Python",
-    "section": "",
-    "text": "Learning objective 1"
+    "section": "Learning Objectives",
+    "text": "Learning Objectives\n\nLearning objective 1"
   },
   {
-    "objectID": "01_notes.html",
-    "href": "01_notes.html",
+    "objectID": "01_notes.html#slides",
+    "href": "01_notes.html#slides",
     "title": "Notes",
-    "section": "",
-    "text": "[insert slides]"
+    "section": "Slides",
+    "text": "Slides\n[insert slides]"
   },
   {
     "objectID": "01_notes.html#notes",
@@ -35,25 +35,25 @@
     "text": "Notes\n[insert notes]"
   },
   {
-    "objectID": "01_video.html",
-    "href": "01_video.html",
+    "objectID": "01_video.html#cohort-01",
+    "href": "01_video.html#cohort-01",
     "title": "Video",
-    "section": "",
-    "text": "[insert video here]"
+    "section": "Cohort 01",
+    "text": "Cohort 01\n[insert video here]"
   },
   {
-    "objectID": "02_main.html",
-    "href": "02_main.html",
+    "objectID": "02_main.html#learning-objectives",
+    "href": "02_main.html#learning-objectives",
     "title": "2. Working with Data",
-    "section": "",
-    "text": "Learning objective 1"
+    "section": "Learning Objectives",
+    "text": "Learning Objectives\n\nLearning objective 1"
   },
   {
-    "objectID": "02_notes.html",
-    "href": "02_notes.html",
+    "objectID": "02_notes.html#slides",
+    "href": "02_notes.html#slides",
     "title": "Notes",
-    "section": "",
-    "text": "[insert slides]"
+    "section": "Slides",
+    "text": "Slides\n[insert slides]"
   },
   {
     "objectID": "02_notes.html#notes",
@@ -63,46 +63,46 @@
     "text": "Notes\n[insert notes]"
   },
   {
-    "objectID": "02_video.html",
-    "href": "02_video.html",
+    "objectID": "02_video.html#cohort-01",
+    "href": "02_video.html#cohort-01",
     "title": "Video",
-    "section": "",
-    "text": "[insert video here]"
+    "section": "Cohort 01",
+    "text": "Cohort 01\n[insert video here]"
   },
   {
-    "objectID": "example_quarto.html",
-    "href": "example_quarto.html",
-    "title": "1  Example Quarto Document",
-    "section": "",
-    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+    "objectID": "example_quarto.html#quarto",
+    "href": "example_quarto.html#quarto",
+    "title": "3  Example Quarto Document",
+    "section": "3.1 Quarto",
+    "text": "3.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
   },
   {
     "objectID": "example_quarto.html#running-code",
     "href": "example_quarto.html#running-code",
-    "title": "1  Example Quarto Document",
-    "section": "1.2 Running Code",
-    "text": "1.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n2\n\n\nYou can add options to executable code like this\n\n\n4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
+    "title": "3  Example Quarto Document",
+    "section": "3.2 Running Code",
+    "text": "3.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n2\n\n\nYou can add options to executable code like this\n\n\n4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
   },
   {
-    "objectID": "example_python.html",
-    "href": "example_python.html",
-    "title": "2  Example Jupyter Notebook",
-    "section": "",
-    "text": "import numpy as np\na = np.arange(15).reshape(3, 5)\na\n\narray([[ 0,  1,  2,  3,  4],\n       [ 5,  6,  7,  8,  9],\n       [10, 11, 12, 13, 14]])"
+    "objectID": "example_python.html#numpy",
+    "href": "example_python.html#numpy",
+    "title": "4  Example Jupyter Notebook",
+    "section": "4.1 NumPy",
+    "text": "4.1 NumPy\n\nimport numpy as np\na = np.arange(15).reshape(3, 5)\na\n\narray([[ 0,  1,  2,  3,  4],\n       [ 5,  6,  7,  8,  9],\n       [10, 11, 12, 13, 14]])"
   },
   {
     "objectID": "example_python.html#matplotlib",
     "href": "example_python.html#matplotlib",
-    "title": "2  Example Jupyter Notebook",
-    "section": "2.2 Matplotlib",
-    "text": "2.2 Matplotlib\n\nimport matplotlib.pyplot as plt\n\nfig = plt.figure()\nx = np.arange(10)\ny = 2.5 * np.sin(x / 20 * np.pi)\nyerr = np.linspace(0.05, 0.2, 10)\n\nplt.errorbar(x, y + 3, yerr=yerr, label='both limits (default)')\nplt.errorbar(x, y + 2, yerr=yerr, uplims=True, label='uplims=True')\nplt.errorbar(x, y + 1, yerr=yerr, uplims=True, lolims=True,\n             label='uplims=True, lolims=True')\n\nupperlimits = [True, False] * 5\nlowerlimits = [False, True] * 5\nplt.errorbar(x, y, yerr=yerr, uplims=upperlimits, lolims=lowerlimits,\n             label='subsets of uplims and lolims')\n\nplt.legend(loc='lower right')\nplt.show(fig)"
+    "title": "4  Example Jupyter Notebook",
+    "section": "4.2 Matplotlib",
+    "text": "4.2 Matplotlib\n\nimport matplotlib.pyplot as plt\n\nfig = plt.figure()\nx = np.arange(10)\ny = 2.5 * np.sin(x / 20 * np.pi)\nyerr = np.linspace(0.05, 0.2, 10)\n\nplt.errorbar(x, y + 3, yerr=yerr, label='both limits (default)')\nplt.errorbar(x, y + 2, yerr=yerr, uplims=True, label='uplims=True')\nplt.errorbar(x, y + 1, yerr=yerr, uplims=True, lolims=True,\n             label='uplims=True, lolims=True')\n\nupperlimits = [True, False] * 5\nlowerlimits = [False, True] * 5\nplt.errorbar(x, y, yerr=yerr, uplims=upperlimits, lolims=lowerlimits,\n             label='subsets of uplims and lolims')\n\nplt.legend(loc='lower right')\nplt.show(fig)"
   },
   {
-    "objectID": "how-to.html",
-    "href": "how-to.html",
+    "objectID": "how-to.html#set-up-quarto",
+    "href": "how-to.html#set-up-quarto",
     "title": "How to add to the book",
-    "section": "",
-    "text": "This book is made with Quarto. Please see the Get Started chapter of the Quarto documentation to learn how to install and run Quarto in your IDE."
+    "section": "Set up Quarto",
+    "text": "Set up Quarto\nThis book is made with Quarto. Please see the Get Started chapter of the Quarto documentation to learn how to install and run Quarto in your IDE."
   },
   {
     "objectID": "how-to.html#add-to-book",
@@ -124,33 +124,5 @@
     "title": "How to add to the book",
     "section": "Push up to GitHub",
     "text": "Push up to GitHub\nPush your changes to your forked repo and then create a pull request for the R4DS admins to merge your changes."
-  },
-  {
-    "objectID": "index.html#welcome",
-    "href": "index.html#welcome",
-    "title": "Practical Python Programming Book Club",
-    "section": "Welcome",
-    "text": "Welcome\nThis is a companion for the book Practical Python Programming by David Beazley.\nThis website is being developed by the R4DS Online Learning Community. Follow along and join the community to participate.\nThis companion follows the R4DS Online Learning Community Code of Conduct."
-  },
-  {
-    "objectID": "example_quarto.html#quarto",
-    "href": "example_quarto.html#quarto",
-    "title": "1  Example Quarto Document",
-    "section": "1.1 Quarto",
-    "text": "1.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
-  },
-  {
-    "objectID": "example_python.html#numpy",
-    "href": "example_python.html#numpy",
-    "title": "2  Example Jupyter Notebook",
-    "section": "2.1 NumPy",
-    "text": "2.1 NumPy\n\nimport numpy as np\na = np.arange(15).reshape(3, 5)\na\n\narray([[ 0,  1,  2,  3,  4],\n       [ 5,  6,  7,  8,  9],\n       [10, 11, 12, 13, 14]])"
-  },
-  {
-    "objectID": "how-to.html#set-up-quarto",
-    "href": "how-to.html#set-up-quarto",
-    "title": "How to add to the book",
-    "section": "Set up Quarto",
-    "text": "Set up Quarto\nThis book is made with Quarto. Please see the Get Started chapter of the Quarto documentation to learn how to install and run Quarto in your IDE."
   }
 ]

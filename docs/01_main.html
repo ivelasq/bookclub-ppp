@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
   <meta charset="utf-8">
-  <meta name="generator" content="quarto-0.9.141">
+  <meta name="generator" content="quarto-0.3.40">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Practical Python Programming Book Club - 1. Introduction to Python</title>
   <style>
@@ -27,14 +27,14 @@
   <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
   <script src="site_libs/quarto-html/anchor.min.js"></script>
   <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-  <link id="quarto-text-highlighting-styles" href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+  <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
   <script src="site_libs/bootstrap/bootstrap.min.js"></script>
   <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
   <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
   <script id="quarto-search-options" type="application/json">{
     "location": "sidebar",
     "copy-button": false,
-    "collapse-after": 3,
+    "collapse-after": 2,
     "panel-placement": "start",
     "type": "textbox",
     "limit": 20,
@@ -60,7 +60,7 @@
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
       <h1 class="quarto-secondary-nav-title">1. Introduction to Python</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+      <button type="button" class="quarto-btn-toggle btn">
         <i class="bi bi-chevron-right"></i>
       </button>
     </div>
@@ -70,7 +70,7 @@
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+  <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./">
       <img src="./cover.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
@@ -101,100 +101,136 @@
     </ul>
 </div>
     </div>
+  </div>
+    <div class="mt-2 flex-shrink-0 align-items-center">
+      <div class="sidebar-search">
+      <div id="quarto-search" class="" title="Search"></div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
+    </div>
+  <div class="sidebar-menu-container"> 
+  <ul class="list-unstyled mt-1">
+      <li class="sidebar-item">
+  <a href="./index.html" class="">Welcome</a>
+</li>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto">
+            <a href="./01_main.html" class="active">1. Introduction to Python</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-main.qmd" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
+            </a>
+            </div>
         </div>
+      <div class="collapse  show" id="quarto-sidebar-section-main.qmd">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="./01_notes.html" class="">Notes</a>
+</li>
+          <li class="sidebar-item">
+  <a href="./01_video.html" class="">Video</a>
+</li>
+        </ul>
       </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Welcome</a>
-  </div>
+    </li>
+  </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto">
+            <a href="./02_main.html" class="">2. Working with Data</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-main.qmd" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="quarto-sidebar-section-main.qmd">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="./02_notes.html" class="">Notes</a>
 </li>
-        <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a href="./01_main.html" class="sidebar-item-text sidebar-link active">1. Introduction to Python</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./01_notes.html" class="sidebar-item-text sidebar-link">Notes</a>
-  </div>
+          <li class="sidebar-item">
+  <a href="./02_video.html" class="">Video</a>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./01_video.html" class="sidebar-item-text sidebar-link">Video</a>
-  </div>
+        </ul>
+      </div>
+    </li>
+  </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto">
+            <a href="./03_main.html" class="">3. Program Organization</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-main.ipynb" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="quarto-sidebar-section-main.ipynb">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="./03_notes.html" class=""><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Notes</span></a>
 </li>
-    </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a href="./02_main.html" class="sidebar-item-text sidebar-link">2. Working with Data</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./02_notes.html" class="sidebar-item-text sidebar-link">Notes</a>
-  </div>
+          <li class="sidebar-item">
+  <a href="./03_video.html" class=""><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Video</span></a>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./02_video.html" class="sidebar-item-text sidebar-link">Video</a>
-  </div>
+        </ul>
+      </div>
+    </li>
+  </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto">
+          <div class="d-inline-flex w-100 sidebar-section-item">
+            <div class="sidebar-section-link me-auto">
+            <a href="./examples.html" class="">Examples</a>
+            </div>
+            <a class="text-start  " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-examples.md" aria-expanded="true">
+              <div><i class="bi bi-chevron-right ms-2"></i></div>
+            </a>
+            </div>
+        </div>
+      <div class="collapse  show" id="quarto-sidebar-section-examples.md">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="./example_quarto.html" class=""><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Example Quarto Document</span></a>
 </li>
-    </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a href="./examples.html" class="sidebar-item-text sidebar-link">Examples</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./example_quarto.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Example Quarto Document</span></a>
-  </div>
+          <li class="sidebar-item">
+  <a href="./example_python.html" class=""><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Example Jupyter Notebook</span></a>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./example_python.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Example Jupyter Notebook</span></a>
-  </div>
+        </ul>
+      </div>
+    </li>
+  </ul>
+      <ul class="list-unstyled sidebar-section depth1">
+    <li class="">
+        <div class="me-auto">
+            <a class="sidebar-section-item d-inline-flex text-start w-100 " data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-appendices" aria-expanded="true">
+              <div class="me-auto sidebar-section-item">Appendices</div>
+            <div><i class="bi bi-chevron-right ms-2"></i></div>
+            </a>
+        </div>
+      <div class="collapse  show" id="quarto-sidebar-section-appendices">
+        <ul class="list-unstyled sidebar-item-contents">
+          <li class="sidebar-item">
+  <a href="./how-to.html" class="">How to add to the book</a>
 </li>
-    </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Appendices</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./how-to.html" class="sidebar-item-text sidebar-link">How to add to the book</a>
+        </ul>
+      </div>
+    </li>
+  </ul>
+  </ul>
   </div>
-</li>
-    </ul>
-  </li>
-    </ul>
-    </div>
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+      <nav id="TOC" role="doc-toc">
 <h2 id="toc-title">Table of contents</h2>
 <ul>
 <li><a href="#learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
@@ -202,17 +238,16 @@
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-<header id="title-block-header" class="quarto-title-block default">
-
-<div class="quarto-title"><h1 class="title d-none d-lg-block display-7">1. Introduction to Python</h1></div></header>
+<main class="content">
+<header id="title-block-header">
+<h1 class="title d-none d-lg-block display-7">1. Introduction to Python</h1>
+</header>
 
 <section id="learning-objectives" class="level2">
 <h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
 <ul>
 <li>Learning objective 1</li>
 </ul>
-
 
 
 </section>
@@ -295,12 +330,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link">
+      <a href="./index.html">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01_notes.html" class="pagination-link">
+      <a href="./01_notes.html">
         <span class="nav-page-text">Notes</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>

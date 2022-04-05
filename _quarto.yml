@@ -22,6 +22,10 @@ book:
       chapters:
       - 02_notes.qmd
       - 02_video.qmd
+    - part: 03_main.ipynb
+      chapters:
+      - 03_notes.ipynb
+      - 03_video.ipynb
     - part: examples.md
       chapters:
       - example_quarto.qmd

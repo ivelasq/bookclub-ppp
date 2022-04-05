@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://dabeaz-course.github.io/practical-python/index.html</loc>
-    <lastmod>2022-04-02T19:11:54.918Z</lastmod>
+    <lastmod>2022-04-05T13:42:42.454Z</lastmod>
   </url>
   <url>
     <loc>https://dabeaz-course.github.io/practical-python/01_main.html</loc>
@@ -30,22 +30,34 @@
   </url>
   <url>
     <loc>https://dabeaz-course.github.io/practical-python/examples.html</loc>
-    <lastmod>2022-04-02T19:11:54.939Z</lastmod>
+    <lastmod>2022-04-05T13:42:42.455Z</lastmod>
   </url>
   <url>
     <loc>https://dabeaz-course.github.io/practical-python/example_quarto.html</loc>
-    <lastmod>2022-04-02T19:11:54.941Z</lastmod>
+    <lastmod>2022-04-05T13:42:42.456Z</lastmod>
   </url>
   <url>
     <loc>https://dabeaz-course.github.io/practical-python/example_python.html</loc>
-    <lastmod>2022-04-02T19:11:54.951Z</lastmod>
+    <lastmod>2022-04-05T13:42:42.457Z</lastmod>
   </url>
   <url>
     <loc>https://dabeaz-course.github.io/practical-python/how-to.html</loc>
-    <lastmod>2022-04-02T19:11:54.964Z</lastmod>
+    <lastmod>2022-04-05T13:42:42.457Z</lastmod>
   </url>
   <url>
     <loc>https://dabeaz-course.github.io/practical-python/Practical-Python-Programming-Book-Club.pdf</loc>
     <lastmod>2022-04-02T19:11:54.556Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dabeaz-course.github.io/practical-python/03_main.html</loc>
+    <lastmod>2022-04-05T13:44:54.766Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dabeaz-course.github.io/practical-python/03_notes.html</loc>
+    <lastmod>2022-04-05T13:44:54.767Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dabeaz-course.github.io/practical-python/03_video.html</loc>
+    <lastmod>2022-04-05T13:44:54.767Z</lastmod>
   </url>
 </urlset>

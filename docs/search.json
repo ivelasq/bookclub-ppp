@@ -124,5 +124,33 @@
     "title": "How to add to the book",
     "section": "Push up to GitHub",
     "text": "Push up to GitHub\nPush your changes to your forked repo and then create a pull request for the R4DS admins to merge your changes."
+  },
+  {
+    "objectID": "index.html#welcome",
+    "href": "index.html#welcome",
+    "title": "Practical Python Programming Book Club",
+    "section": "Welcome",
+    "text": "Welcome\nThis is a companion for the book Practical Python Programming by David Beazley.\nThis website is being developed by the R4DS Online Learning Community. Follow along and join the community to participate.\nThis companion follows the R4DS Online Learning Community Code of Conduct."
+  },
+  {
+    "objectID": "example_quarto.html#quarto",
+    "href": "example_quarto.html#quarto",
+    "title": "1  Example Quarto Document",
+    "section": "1.1 Quarto",
+    "text": "1.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+  },
+  {
+    "objectID": "example_python.html#numpy",
+    "href": "example_python.html#numpy",
+    "title": "2  Example Jupyter Notebook",
+    "section": "2.1 NumPy",
+    "text": "2.1 NumPy\n\nimport numpy as np\na = np.arange(15).reshape(3, 5)\na\n\narray([[ 0,  1,  2,  3,  4],\n       [ 5,  6,  7,  8,  9],\n       [10, 11, 12, 13, 14]])"
+  },
+  {
+    "objectID": "how-to.html#set-up-quarto",
+    "href": "how-to.html#set-up-quarto",
+    "title": "How to add to the book",
+    "section": "Set up Quarto",
+    "text": "Set up Quarto\nThis book is made with Quarto. Please see the Get Started chapter of the Quarto documentation to learn how to install and run Quarto in your IDE."
   }
 ]

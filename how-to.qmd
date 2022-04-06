@@ -24,7 +24,7 @@ Create the corresponding files in the main directory. You can use `.qmd` or `.ip
 Once you have added and edited your files, don't forget to render the book:
 
 ``` bash
-quarto render
+quarto render --to html
 ```
 
 ## Push up to GitHub

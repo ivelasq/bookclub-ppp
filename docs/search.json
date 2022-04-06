@@ -42,6 +42,13 @@
     "text": "Cohort 01\n[insert video here]"
   },
   {
+    "objectID": "01_exercises.html#exercise-1",
+    "href": "01_exercises.html#exercise-1",
+    "title": "1  Exercises",
+    "section": "1.1 Exercise #1",
+    "text": "1.1 Exercise #1\n\nimport pandas as pd"
+  },
+  {
     "objectID": "02_main.html#learning-objectives",
     "href": "02_main.html#learning-objectives",
     "title": "2. Working with Data",
@@ -72,30 +79,30 @@
   {
     "objectID": "example_quarto.html#quarto",
     "href": "example_quarto.html#quarto",
-    "title": "3  Example Quarto Document",
-    "section": "3.1 Quarto",
-    "text": "3.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+    "title": "4  Example Quarto Document",
+    "section": "4.1 Quarto",
+    "text": "4.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
   },
   {
     "objectID": "example_quarto.html#running-code",
     "href": "example_quarto.html#running-code",
-    "title": "3  Example Quarto Document",
-    "section": "3.2 Running Code",
-    "text": "3.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n2\n\n\nYou can add options to executable code like this\n\n\n4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
+    "title": "4  Example Quarto Document",
+    "section": "4.2 Running Code",
+    "text": "4.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n2\n\n\nYou can add options to executable code like this\n\n\n4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
   },
   {
     "objectID": "example_python.html#numpy",
     "href": "example_python.html#numpy",
-    "title": "4  Example Jupyter Notebook",
-    "section": "4.1 NumPy",
-    "text": "4.1 NumPy\n\nimport numpy as np\na = np.arange(15).reshape(3, 5)\na\n\narray([[ 0,  1,  2,  3,  4],\n       [ 5,  6,  7,  8,  9],\n       [10, 11, 12, 13, 14]])"
+    "title": "5  Example Jupyter Notebook",
+    "section": "5.1 NumPy",
+    "text": "5.1 NumPy\n\nimport numpy as np\na = np.arange(15).reshape(3, 5)\na\n\narray([[ 0,  1,  2,  3,  4],\n       [ 5,  6,  7,  8,  9],\n       [10, 11, 12, 13, 14]])"
   },
   {
     "objectID": "example_python.html#matplotlib",
     "href": "example_python.html#matplotlib",
-    "title": "4  Example Jupyter Notebook",
-    "section": "4.2 Matplotlib",
-    "text": "4.2 Matplotlib\n\nimport matplotlib.pyplot as plt\n\nfig = plt.figure()\nx = np.arange(10)\ny = 2.5 * np.sin(x / 20 * np.pi)\nyerr = np.linspace(0.05, 0.2, 10)\n\nplt.errorbar(x, y + 3, yerr=yerr, label='both limits (default)')\nplt.errorbar(x, y + 2, yerr=yerr, uplims=True, label='uplims=True')\nplt.errorbar(x, y + 1, yerr=yerr, uplims=True, lolims=True,\n             label='uplims=True, lolims=True')\n\nupperlimits = [True, False] * 5\nlowerlimits = [False, True] * 5\nplt.errorbar(x, y, yerr=yerr, uplims=upperlimits, lolims=lowerlimits,\n             label='subsets of uplims and lolims')\n\nplt.legend(loc='lower right')\nplt.show(fig)"
+    "title": "5  Example Jupyter Notebook",
+    "section": "5.2 Matplotlib",
+    "text": "5.2 Matplotlib\n\nimport matplotlib.pyplot as plt\n\nfig = plt.figure()\nx = np.arange(10)\ny = 2.5 * np.sin(x / 20 * np.pi)\nyerr = np.linspace(0.05, 0.2, 10)\n\nplt.errorbar(x, y + 3, yerr=yerr, label='both limits (default)')\nplt.errorbar(x, y + 2, yerr=yerr, uplims=True, label='uplims=True')\nplt.errorbar(x, y + 1, yerr=yerr, uplims=True, lolims=True,\n             label='uplims=True, lolims=True')\n\nupperlimits = [True, False] * 5\nlowerlimits = [False, True] * 5\nplt.errorbar(x, y, yerr=yerr, uplims=upperlimits, lolims=lowerlimits,\n             label='subsets of uplims and lolims')\n\nplt.legend(loc='lower right')\nplt.show(fig)"
   },
   {
     "objectID": "how-to.html#set-up-quarto",
@@ -116,7 +123,7 @@
     "href": "how-to.html#render-the-book",
     "title": "How to add to the book",
     "section": "Render the book",
-    "text": "Render the book\nOnce you have added and edited your files, don’t forget to render the book:\nquarto render"
+    "text": "Render the book\nOnce you have added and edited your files, don’t forget to render the book:\nquarto render --to html"
   },
   {
     "objectID": "how-to.html#push-up-to-github",

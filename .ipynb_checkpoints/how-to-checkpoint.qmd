@@ -24,7 +24,7 @@ Then, in the `_quarto.yml` file, under `chapters`, add a part with your chapter.
 
 ## Render the book
 
-Once you have added and edited your files, don't forget to render the book:
+Once you have added and edited your files, don't forget to render the book. Run this in the terminal:
 
 ``` bash
 quarto render --to html
@@ -33,3 +33,9 @@ quarto render --to html
 ## Push up to GitHub
 
 Push your changes to your forked repo and then create a pull request for the R4DS admins to merge your changes.
+
+```
+git add .
+git commit -m "Message here"
+git push
+```

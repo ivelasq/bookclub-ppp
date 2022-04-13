@@ -6,18 +6,21 @@ This book is made with [Quarto](https://quarto.org/). Please see the [Get Starte
 
 ## Add to book
 
-Once you have everything set up, forked the repo, and cloned to your computer, you can add a new chapter to the book:
+Once you have everything set up, forked the repo, and cloned to your computer, you can add a new chapter to the book.
 
-- In the `_quarto.yml` file, under `chapters`, add a part with your chapter like so:
+Create a new file in the repository folder. For example, to create a new file called `01_exercises.qmd`, navigate to the folder then create one using `touch 01_exercises.qmd`. If you are using VSCode, you can use the Quarto plug-in. You can use `.qmd` or `.ipynb` files that run computations if you would like, or just plain `.md` files. Check out the files under Examples to see the various options.
+
+Write in what you would like in the file.
+
+Then, in the `_quarto.yml` file, under `chapters`, add a part with your chapter. The filter after `part` is the first page of chapter; the ones under `chapters` will be subpages.
 
 ``` yml
   - part: 01_main.qmd
       chapters: 
       - 01_notes.qmd
       - 01_video.qmd
+      - 01_exercises.qmd
 ```
-
-Create the corresponding files in the main directory. You can use `.qmd` or `.ipynb` files that run computations if you would like, or just plain `.md` files. Check out the files under Examples to see how they are done.
 
 ## Render the book
 

@@ -2,4 +2,6 @@
 
 ## Learning Objectives
 
-* Learning objective 1
+*  Learn Python basics from the ground up. 
+
+* Learn Strings,Lists, Files, Functions

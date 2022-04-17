@@ -11,34 +11,31 @@ book:
   sharing: [twitter, facebook, linkedin]
   page-footer:
     right: "Illustration by Icons 8 from Ouch!"
-  
+  number-depth: 0
+
   chapters:
     - index.qmd
     - part: 01_main.qmd
-      chapters: 
-      - 01_notes.qmd
-      - 01_video.qmd
-      - 01_exercises.ipynb
+      chapters:
+        - 01_notes.ipynb
+        - 01_video.qmd
     - part: 02_main.qmd
       chapters:
-      - 02_notes.qmd
-      - 02_video.qmd
+        - 02_notes.ipynb
+        - 02_video.qmd
     - part: 03_main.ipynb
       chapters:
       - 03_notes.ipynb
       - 03_video.ipynb
     - part: examples.md
       chapters:
-      - example_quarto.qmd
-      - example_python.ipynb
+        - example_quarto.qmd
+        - example_python.ipynb
   appendices:
-      - how-to.qmd
- 
+    - how-to.qmd
+
 format:
   html:
     theme: cosmo
   pdf:
     documentclass: scrreprt
-
-
-

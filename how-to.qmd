@@ -12,7 +12,7 @@ Create a new file in the repository folder. For example, to create a new file ca
 
 Write in what you would like in the file.
 
-Then, in the `_quarto.yml` file, under `chapters`, add a part with your chapter. The filter after `part` is the first page of chapter; the ones under `chapters` will be subpages.
+Then, in the `_quarto.yml` file, under `chapters`, add a part with your chapter. The file listed after `part` is the first page of chapter; the ones under `chapters` will be subpages.
 
 ``` yml
   - part: 01_main.qmd
@@ -34,7 +34,7 @@ quarto render --to html
 
 Push your changes to your forked repo and then create a pull request for the R4DS admins to merge your changes.
 
-```
+``` bash
 git add .
 git commit -m "Message here"
 git push

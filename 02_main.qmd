@@ -2,4 +2,4 @@
 
 ## Learning Objectives
 
-* Learning objective 1
+> This section introduces Python’s core data structures of tuples, lists, sets, and dictionaries and discusses common data handling idioms. The last part of this section dives a little deeper into Python’s underlying object model

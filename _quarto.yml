@@ -27,6 +27,7 @@ book:
       chapters:
       - 03_notes.ipynb
       - 03_video.ipynb
+      - 03_exercises.ipynb
     - part: examples.md
       chapters:
         - example_quarto.qmd

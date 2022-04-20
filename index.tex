@@ -162,7 +162,7 @@
 \begin{document}
 \maketitle
 
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, frame hidden, borderline west={3pt}{0pt}{shadecolor}, enhanced, boxrule=0pt, sharp corners]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, boxrule=0pt, interior hidden, borderline west={3pt}{0pt}{shadecolor}, enhanced, sharp corners]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -2053,14 +2053,1449 @@ entity.
 
 \part{3. Program Organization}
 
+\hypertarget{learning-objectives-2}{%
+\section*{Learning Objectives}\label{learning-objectives-2}}
+\addcontentsline{toc}{section}{Learning Objectives}
+
+To write better programs, we want to understand how to:
+
+\begin{itemize}
+\tightlist
+\item
+  write functions
+\item
+  handle errors
+\item
+  use modules
+\end{itemize}
+
 \hypertarget{notes-2}{%
 \chapter{Notes}\label{notes-2}}
 
-To write better programs, we will cover: * writing functions * handling
-errors * introducing modules
+\hypertarget{scripting}{%
+\section{Scripting}\label{scripting}}
+
+A \emph{script} is a program that runs a series of statements and stops.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Order is important.} Put definitions of variables and
+  functions near the top.
+\item
+  Names must always be defined before they are used.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ square(x):}
+    \ControlFlowTok{return}\NormalTok{ x}\OperatorTok{*}\NormalTok{x}
+
+\NormalTok{a }\OperatorTok{=} \DecValTok{42}
+\NormalTok{b }\OperatorTok{=}\NormalTok{ a }\OperatorTok{+} \DecValTok{2}     \CommentTok{\# Requires that \textasciigrave{}a\textasciigrave{} is defined}
+
+\NormalTok{z }\OperatorTok{=}\NormalTok{ square(b) }\CommentTok{\# Requires \textasciigrave{}square\textasciigrave{} and \textasciigrave{}b\textasciigrave{} to be defined}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{functions-1}{%
+\subsection{Functions}\label{functions-1}}
+
+A function is a named sequence of statements.
+
+\emph{Why?}
+
+\begin{itemize}
+\tightlist
+\item
+  Use a function to put all of the code related to a single task all in
+  one place.
+\item
+  Functions simplify complex operations.
+\item
+  They also simplify repeated operations.
+\end{itemize}
+
+\emph{How?}
+
+\begin{itemize}
+\tightlist
+\item
+  Like variables, define functions prior to actually being used (or
+  called) during program execution.
+\end{itemize}
+
+\emph{Best practices}
+
+\begin{itemize}
+\tightlist
+\item
+  Use a ``bottom-up'' style: the smaller/simpler functions go at the top
+  of your script.
+\item
+  Functions should only operate on passed inputs and avoid global
+  variables and mysterious side-effects.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Using global variables from functions -\textgreater{} use classes to
+    have assess all the variables
+  \end{itemize}
+\item
+  Use a `doc-string' to include documentation for your function. Include
+  at least a short one sentence summary of what the function does.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    First line defines purpose of the function
+  \item
+    Next lines explain the arguments and return type
+  \end{itemize}
+\item
+  Use type annotations to inform users about function definitions.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# define function {-} put all tasks in one place}
+\KeywordTok{def}\NormalTok{ read\_prices(filename: }\BuiltInTok{str}\NormalTok{) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{dict}\NormalTok{: }\CommentTok{\# add type annotation}
+    \CommentTok{\# add documentation with a doc string}
+    \CommentTok{\textquotesingle{}\textquotesingle{}\textquotesingle{} }
+\CommentTok{    Read prices from a CSV file of name,price data}
+\CommentTok{    \textquotesingle{}\textquotesingle{}\textquotesingle{}}
+\NormalTok{    prices }\OperatorTok{=}\NormalTok{ \{\}}
+    \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(filename) }\ImportTok{as}\NormalTok{ f:}
+\NormalTok{        f\_csv }\OperatorTok{=}\NormalTok{ csv.reader(f)}
+        \ControlFlowTok{for}\NormalTok{ row }\KeywordTok{in}\NormalTok{ f\_csv:}
+\NormalTok{            prices[row[}\DecValTok{0}\NormalTok{]] }\OperatorTok{=} \BuiltInTok{float}\NormalTok{(row[}\DecValTok{1}\NormalTok{])}
+    \ControlFlowTok{return}\NormalTok{ prices}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{more-on-functions}{%
+\section{More on Functions}\label{more-on-functions}}
+
+\hypertarget{calling-a-function}{%
+\subsection{Calling a function}\label{calling-a-function}}
+
+\begin{itemize}
+\tightlist
+\item
+  Positional arguments
+  \texttt{prices\ =\ read\_prices(\textquotesingle{}prices.csv\textquotesingle{},\ True)}
+\item
+  Keyword arguments
+  \texttt{prices\ =\ read\_prices(filename=\textquotesingle{}prices.csv\textquotesingle{},\ debug=True)}
+\end{itemize}
+
+\hypertarget{default-arguments}{%
+\subsection{Default arguments}\label{default-arguments}}
+
+\begin{itemize}
+\tightlist
+\item
+  Define a default that needs to be overwritten
+\item
+  All non-optional arguments go first
+\item
+  Keyword arguments improve code clarity
+\item
+  Always give short, but meaningful names to functions arguments
+\end{itemize}
+
+default: \texttt{def\ read\_prices(filename,\ debug=False)}
+
+optional argument:
+\texttt{d\ =\ read\_prices(\textquotesingle{}prices.csv\textquotesingle{})}
+
+override argument:
+\texttt{e\ =\ read\_prices(\textquotesingle{}prices.dat\textquotesingle{},\ True)}
+
+even better override argument:
+\texttt{d\ =\ read\_prices(\textquotesingle{}prices.csv\textquotesingle{},\ debug=True)}
+
+\hypertarget{returning-values}{%
+\subsection{Returning values}\label{returning-values}}
+
+\begin{itemize}
+\tightlist
+\item
+  The return statement returns a value.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ square(x):}
+    \ControlFlowTok{return}\NormalTok{ x }\OperatorTok{*}\NormalTok{ x}
+
+\NormalTok{square(}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+4
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  If no return value is given or return is missing, None is returned.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ square(x):}
+\NormalTok{    x }\OperatorTok{*}\NormalTok{ x}
+
+\NormalTok{square(}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Functions can only return one value OR return them in a tuple.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ divide(a,b):}
+\NormalTok{    q }\OperatorTok{=}\NormalTok{ a }\OperatorTok{//}\NormalTok{ b      }\CommentTok{\# Quotient}
+\NormalTok{    r }\OperatorTok{=}\NormalTok{ a }\OperatorTok{\%}\NormalTok{ b       }\CommentTok{\# Remainder}
+    \ControlFlowTok{return}\NormalTok{ q, r     }\CommentTok{\# Return a tuple}
+
+\NormalTok{x, y }\OperatorTok{=}\NormalTok{ divide(}\DecValTok{37}\NormalTok{,}\DecValTok{5}\NormalTok{) }\CommentTok{\# x = 7, y = 2}
+
+\NormalTok{x, y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+(7, 2)
+\end{verbatim}
+
+\hypertarget{variable-scope}{%
+\subsection{Variable scope}\label{variable-scope}}
+
+Variables assignments occur outside and inside function definitions. *
+Variables defined outside are ``global''. - Functions can freely access
+the values of globals defined in the same file. - However, functions
+cannot modify globals. - There is a \texttt{global} keyword that lets
+you modify global variables. - \texttt{globals()} will list all of your
+global variables. * Variables inside a function are ``local''. - Local
+variables are not retained or accessible after the function call.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ greeting():}
+\NormalTok{    name }\OperatorTok{=} \StringTok{\textquotesingle{}Dave\textquotesingle{}} \CommentTok{\# Using \textasciigrave{}name\textasciigrave{} local variable}
+    \BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}Hello\textquotesingle{}}\NormalTok{, name)  }
+    
+\NormalTok{greeting()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Hello Dave
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{name }\OperatorTok{=} \StringTok{\textquotesingle{}Dave\textquotesingle{}}
+
+\KeywordTok{def}\NormalTok{ greeting():}
+    \BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}Hello\textquotesingle{}}\NormalTok{, name)  }\CommentTok{\# Using \textasciigrave{}name\textasciigrave{} global variable}
+
+\NormalTok{greeting()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Hello Dave
+\end{verbatim}
+
+\hypertarget{argument-passing}{%
+\subsection{Argument passing}\label{argument-passing}}
+
+\begin{itemize}
+\tightlist
+\item
+  Values are not copies
+\item
+  Can be modified in-place
+\item
+  Variable assignment never overwrites memory. The name is merely bound
+  to a new value.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ foo(items):}
+\NormalTok{    items.append(}\DecValTok{42}\NormalTok{)    }\CommentTok{\# Modifies the input object}
+
+\NormalTok{a }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{]}
+\NormalTok{foo(a)}
+\BuiltInTok{print}\NormalTok{(a)                }\CommentTok{\# [1, 2, 3, 42]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1, 2, 3, 42]
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ bar(items):}
+\NormalTok{    items }\OperatorTok{=}\NormalTok{ [}\DecValTok{4}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{6}\NormalTok{]    }\CommentTok{\# Changes local \textasciigrave{}items\textasciigrave{} variable to point to a different object}
+
+\NormalTok{b }\OperatorTok{=}\NormalTok{ [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{]}
+\NormalTok{bar(b)}
+\BuiltInTok{print}\NormalTok{(b)                }\CommentTok{\# [1, 2, 3]}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{error-checking}{%
+\section{Error Checking}\label{error-checking}}
+
+\begin{itemize}
+\tightlist
+\item
+  Python performs no checking or validation of function argument types
+  or values.
+\item
+  Errors appear at run time.
+\end{itemize}
+
+\hypertarget{exceptions}{%
+\subsection{Exceptions}\label{exceptions}}
+
+\begin{itemize}
+\tightlist
+\item
+  Use \texttt{raise} to raise exceptions.
+\item
+  Exceptions have an associated value
+  (\texttt{f\textquotesingle{}\{name\}\ not\ authorized\textquotesingle{}}
+  below).
+\end{itemize}
+
+``Don't catch exceptions. Fail fast and loud. If it's important, someone
+else will take care of the problem. Only catch an exception if you are
+that someone. That is, only catch errors where you can recover and
+sanely keep going.''
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{authorized }\OperatorTok{=}\NormalTok{ [}\StringTok{"Alpha"}\NormalTok{, }\StringTok{"Bravo"}\NormalTok{, }\StringTok{"Delta"}\NormalTok{]}
+
+\ControlFlowTok{if}\NormalTok{ name }\KeywordTok{not} \KeywordTok{in}\NormalTok{ authorized:}
+    \ControlFlowTok{raise} \PreprocessorTok{RuntimeError}\NormalTok{(}\SpecialStringTok{f\textquotesingle{}}\SpecialCharTok{\{}\NormalTok{name}\SpecialCharTok{\}}\SpecialStringTok{ not authorized\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+RuntimeError: Dave not authorized
+\end{verbatim}
+
+\hypertarget{exception-handling}{%
+\subsection{Exception Handling}\label{exception-handling}}
+
+\begin{itemize}
+\tightlist
+\item
+  Use \texttt{try-except} to catch exceptions.
+\item
+  Exceptions propagate to the first matching \texttt{except}.
+\item
+  See \href{https://docs.python.org/3/library/exceptions.html}{built-in
+  exceptions}.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ grok():}
+\NormalTok{    ...}
+    \ControlFlowTok{raise} \PreprocessorTok{RuntimeError}\NormalTok{(}\StringTok{\textquotesingle{}Whoa!\textquotesingle{}}\NormalTok{)   }\CommentTok{\# Exception raised here}
+
+\KeywordTok{def}\NormalTok{ spam():}
+\NormalTok{    grok()                        }\CommentTok{\# Call that will raise exception}
+
+\KeywordTok{def}\NormalTok{ bar():}
+    \ControlFlowTok{try}\NormalTok{:}
+\NormalTok{       spam()}
+    \ControlFlowTok{except} \PreprocessorTok{RuntimeError} \ImportTok{as}\NormalTok{ e:     }\CommentTok{\# Exception caught here}
+\NormalTok{        ...}
+
+\KeywordTok{def}\NormalTok{ foo():}
+    \ControlFlowTok{try}\NormalTok{:}
+\NormalTok{         bar()}
+    \ControlFlowTok{except} \PreprocessorTok{RuntimeError} \ImportTok{as}\NormalTok{ e:     }\CommentTok{\# Exception does NOT arrive here}
+\NormalTok{        ...}
+
+\NormalTok{foo()}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{catching-multiple-errors}{%
+\subsection{Catching Multiple Errors}\label{catching-multiple-errors}}
+
+\begin{itemize}
+\tightlist
+\item
+  You can catch different kinds of exceptions using multiple
+  \texttt{except} blocks.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{try}\NormalTok{:}
+\NormalTok{  ...}
+\ControlFlowTok{except} \PreprocessorTok{LookupError} \ImportTok{as}\NormalTok{ e:}
+\NormalTok{  ...}
+\ControlFlowTok{except} \PreprocessorTok{RuntimeError} \ImportTok{as}\NormalTok{ e:}
+\NormalTok{  ...}
+\ControlFlowTok{except} \PreprocessorTok{IOError} \ImportTok{as}\NormalTok{ e:}
+\NormalTok{  ...}
+\ControlFlowTok{except} \PreprocessorTok{KeyboardInterrupt} \ImportTok{as}\NormalTok{ e:}
+\NormalTok{  ...}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{catching-all-errors}{%
+\subsection{Catching All Errors}\label{catching-all-errors}}
+
+\begin{itemize}
+\tightlist
+\item
+  This method tells you the reason something failed.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{try}\NormalTok{:}
+\NormalTok{    go\_do\_something()}
+\ControlFlowTok{except} \PreprocessorTok{Exception} \ImportTok{as}\NormalTok{ e:}
+    \BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}Computer says no. Reason :\textquotesingle{}}\NormalTok{, e)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Computer says no. Reason : name 'go_do_something' is not defined
+\end{verbatim}
+
+\hypertarget{finally-and-with-statements}{%
+\subsection{\texorpdfstring{\texttt{finally} and \texttt{with}
+statements}{finally and with statements}}\label{finally-and-with-statements}}
+
+\begin{itemize}
+\tightlist
+\item
+  Specifies code that must run regardless of whether or not an exception
+  occurs.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lock }\OperatorTok{=}\NormalTok{ Lock()}
+\NormalTok{...}
+\NormalTok{lock.acquire()}
+\ControlFlowTok{try}\NormalTok{:}
+\NormalTok{    ...}
+\ControlFlowTok{finally}\NormalTok{:}
+\NormalTok{    lock.release()  }\CommentTok{\# this will ALWAYS be executed. With and without exception.}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  In modern code, try-finally is often replaced with the \texttt{with}
+  statement.
+\end{itemize}
+
+\begin{verbatim}
+lock = Lock()
+with lock:
+    # lock acquired
+    ...
+# lock released
+\end{verbatim}
+
+\hypertarget{modules}{%
+\section{Modules}\label{modules}}
+
+\begin{itemize}
+\tightlist
+\item
+  Any Python source file is a module (file = module).
+\item
+  The \texttt{import} statement loads and executes a module:
+  \texttt{import\ foo}.
+\end{itemize}
+
+\hypertarget{namespace}{%
+\subsection{Namespace}\label{namespace}}
+
+A module is sometimes said to be a namespace. The module name is
+directly tied to the file name.
+
+\begin{itemize}
+\tightlist
+\item
+  The module name is used as a prefix: \texttt{a\ =\ foo.grok(2)}
+\item
+  The names are all of the global variables and functions defined in the
+  source file.
+\item
+  You can refer to a variable of the same name if in two different
+  modules (modules are isolated).
+\item
+  Each module is its own little universe (global variables are always
+  bound to the enclosing module).
+\end{itemize}
+
+\hypertarget{module-execution}{%
+\subsection{Module execution}\label{module-execution}}
+
+When a module is imported, all of the statements in the module execute
+one after another until the end of the file is reached. - Python
+consults a path list (\texttt{sys.path}) when looking for modules. This
+can be adjusted.
+
+\hypertarget{import-as-statement}{%
+\subsubsection{\texorpdfstring{\texttt{import\ as}
+statement}{import as statement}}\label{import-as-statement}}
+
+You can change the name of a module as you import it:
+\texttt{import\ pandas\ as\ pd}
+
+\begin{itemize}
+\tightlist
+\item
+  Each module loads and executes only once.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The safest way to load modified code into Python is to quit and
+    restart the interpreter.
+  \end{itemize}
+\item
+  Variations on import do not change the way that modules work.
+\end{itemize}
+
+\hypertarget{from-module-import}{%
+\subsubsection{\texorpdfstring{\texttt{from} module
+import}{from module import}}\label{from-module-import}}
+
+This picks certain statements from a module rather than all of them:
+\texttt{from\ math\ import\ sin,\ cos}
+
+\hypertarget{main-module}{%
+\section{Main Module}\label{main-module}}
+
+The main module is the source file that runs first.
+
+Any Python file can either run as main or as a library import.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bash }\OperatorTok{\%}\NormalTok{ python3 prog.py }\CommentTok{\# Running as main}
+\ImportTok{import}\NormalTok{ prog   }\CommentTok{\# Running as library import}
+\end{Highlighting}
+\end{Shaded}
+
+Usually, you don't want statements that are part of the main program to
+execute on a library import.
+
+\begin{itemize}
+\tightlist
+\item
+  https://stackoverflow.com/questions/419163/what-does-if-name-main-do
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if} \VariableTok{\_\_name\_\_} \OperatorTok{==} \StringTok{\textquotesingle{}\_\_main\_\_\textquotesingle{}}\NormalTok{:}
+    \CommentTok{\# Does not execute if loaded with import ...}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{command-line}{%
+\subsection{Command Line}\label{command-line}}
+
+Python is often used for command-line tools.
+
+\begin{itemize}
+\tightlist
+\item
+  The command line is a list of text strings:
+  \texttt{bash\ \%\ python3\ report.py\ portfolio.csv\ prices.csv}
+\end{itemize}
+
+\hypertarget{standard-si}{%
+\subsection{Standard S/I}\label{standard-si}}
+
+Standard Input / Output (or stdio) are files that work the same as
+normal files.
+
+\begin{itemize}
+\tightlist
+\item
+  Print is directed to \texttt{sys.stdout}
+\item
+  Input is read from \texttt{sys.stderr}
+\item
+  Tracebacks and errors are directed to \texttt{sys.stdin}
+\end{itemize}
+
+\hypertarget{environment-variables}{%
+\subsection{Environment Variables}\label{environment-variables}}
+
+\begin{itemize}
+\tightlist
+\item
+  Environment variables are set in the shell:
+  \texttt{bash\ \%\ setenv\ NAME\ dave}
+\item
+  \texttt{os.environ} is a dictionary that contains these values.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ os}
+
+\NormalTok{name }\OperatorTok{=}\NormalTok{ os.environ[}\StringTok{\textquotesingle{}NAME\textquotesingle{}}\NormalTok{] }\CommentTok{\# \textquotesingle{}dave\textquotesingle{}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{program-exit}{%
+\subsection{Program Exit}\label{program-exit}}
+
+Program exit is handled through exceptions: \texttt{raise\ SystemExit}.
+
+\hypertarget{design-discussion}{%
+\section{Design Discussion}\label{design-discussion}}
+
+\hypertarget{filenames-versus-iterables}{%
+\subsection{Filenames versus
+Iterables}\label{filenames-versus-iterables}}
+
+\begin{itemize}
+\tightlist
+\item
+  Which of these functions do you prefer? Why?
+\item
+  Which of these functions is more flexible?
+\end{itemize}
+
+Option 1:
+
+\begin{verbatim}
+# Provide a filename
+def read_data(filename):
+    records = []
+    with open(filename) as f:
+        for line in f:
+            ...
+            records.append(r)
+    return records
+
+d = read_data('file.csv')
+\end{verbatim}
+
+Option 2:
+
+\begin{verbatim}
+# Provide lines
+def read_data(lines):
+    records = []
+    for line in lines:
+        ...
+        records.append(r)
+    return records
+
+with open('file.csv') as f:
+    d = read_data(f)
+\end{verbatim}
+
+\textbf{Duck typing:} If it looks like a duck, swims like a duck, and
+quacks like a duck, then it probably is a duck.
+
+In the second version of read\_data() above, the function expects any
+iterable object, not just the lines of a file. There is considerable
+flexibility with this design. \emph{Question: Should we embrace or fight
+this flexibility?}
 
 \hypertarget{video-2}{%
 \chapter{Video}\label{video-2}}
+
+\hypertarget{exercises}{%
+\chapter{Exercises}\label{exercises}}
+
+\hypertarget{exercise-3.1-structuring-a-program-as-a-collection-of-functions}{%
+\section{Exercise 3.1: Structuring a program as a collection of
+functions}\label{exercise-3.1-structuring-a-program-as-a-collection-of-functions}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# report.py}
+\ImportTok{import}\NormalTok{ csv}
+
+\KeywordTok{def}\NormalTok{ read\_portfolio(filename):}
+    \CommentTok{\textquotesingle{}\textquotesingle{}\textquotesingle{}}
+\CommentTok{    Read a stock portfolio file into a list of dictionaries with keys}
+\CommentTok{    name, shares, and price.}
+\CommentTok{    \textquotesingle{}\textquotesingle{}\textquotesingle{}}
+\NormalTok{    portfolio }\OperatorTok{=}\NormalTok{ []}
+    \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(filename) }\ImportTok{as}\NormalTok{ f:}
+\NormalTok{        rows }\OperatorTok{=}\NormalTok{ csv.reader(f)}
+\NormalTok{        headers }\OperatorTok{=} \BuiltInTok{next}\NormalTok{(rows)}
+
+        \ControlFlowTok{for}\NormalTok{ row }\KeywordTok{in}\NormalTok{ rows:}
+\NormalTok{            record }\OperatorTok{=} \BuiltInTok{dict}\NormalTok{(}\BuiltInTok{zip}\NormalTok{(headers, row))}
+\NormalTok{            stock }\OperatorTok{=}\NormalTok{ \{}
+                \StringTok{\textquotesingle{}name\textquotesingle{}}\NormalTok{ : record[}\StringTok{\textquotesingle{}name\textquotesingle{}}\NormalTok{],}
+                \StringTok{\textquotesingle{}shares\textquotesingle{}}\NormalTok{ : }\BuiltInTok{int}\NormalTok{(record[}\StringTok{\textquotesingle{}shares\textquotesingle{}}\NormalTok{]),}
+                \StringTok{\textquotesingle{}price\textquotesingle{}}\NormalTok{ : }\BuiltInTok{float}\NormalTok{(record[}\StringTok{\textquotesingle{}price\textquotesingle{}}\NormalTok{])}
+\NormalTok{            \}}
+\NormalTok{            portfolio.append(stock)}
+    \ControlFlowTok{return}\NormalTok{ portfolio}
+\NormalTok{...}
+\end{Highlighting}
+\end{Shaded}
+
+Modify your report.py program so that all major operations, including
+calculations and output, are carried out by a collection of functions.
+Specifically:
+
+\begin{itemize}
+\tightlist
+\item
+  Create a function print\_report(report) that prints out the report.
+\item
+  Change the last part of the program so that it is nothing more than a
+  series of function calls and no other computation.
+\end{itemize}
+
+Original operation:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{headers }\OperatorTok{=}\NormalTok{ (}\StringTok{\textquotesingle{}Name\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Shares\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Price\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Change\textquotesingle{}}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}}\SpecialCharTok{\%10s}\StringTok{ }\SpecialCharTok{\%10s}\StringTok{ }\SpecialCharTok{\%10s}\StringTok{ }\SpecialCharTok{\%10s}\StringTok{\textquotesingle{}}  \OperatorTok{\%}\NormalTok{ headers)}
+\BuiltInTok{print}\NormalTok{((}\StringTok{\textquotesingle{}{-}\textquotesingle{}} \OperatorTok{*} \DecValTok{10} \OperatorTok{+} \StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{) }\OperatorTok{*} \BuiltInTok{len}\NormalTok{(headers))}
+
+\ControlFlowTok{for}\NormalTok{ row }\KeywordTok{in}\NormalTok{ report:}
+    \BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}}\SpecialCharTok{\%10s}\StringTok{ }\SpecialCharTok{\%10d}\StringTok{ }\SpecialCharTok{\%10.2f}\StringTok{ }\SpecialCharTok{\%10.2f}\StringTok{\textquotesingle{}} \OperatorTok{\%}\NormalTok{ row)}
+\end{Highlighting}
+\end{Shaded}
+
+Function option:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ print\_report(reportdata):}
+    \CommentTok{\textquotesingle{}\textquotesingle{}\textquotesingle{}}
+\CommentTok{    Print a nicely formated table from a list of (name, shares, price, change) tuples.}
+\CommentTok{    \textquotesingle{}\textquotesingle{}\textquotesingle{}}
+\NormalTok{    headers }\OperatorTok{=}\NormalTok{ (}\StringTok{\textquotesingle{}Name\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Shares\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Price\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Change\textquotesingle{}}\NormalTok{)}
+    \BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}}\SpecialCharTok{\%10s}\StringTok{ }\SpecialCharTok{\%10s}\StringTok{ }\SpecialCharTok{\%10s}\StringTok{ }\SpecialCharTok{\%10s}\StringTok{\textquotesingle{}} \OperatorTok{\%}\NormalTok{ headers)}
+    \BuiltInTok{print}\NormalTok{((}\StringTok{\textquotesingle{}{-}\textquotesingle{}}\OperatorTok{*}\DecValTok{10} \OperatorTok{+} \StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{)}\OperatorTok{*}\BuiltInTok{len}\NormalTok{(headers))}
+    \ControlFlowTok{for}\NormalTok{ row }\KeywordTok{in}\NormalTok{ reportdata:}
+        \BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}}\SpecialCharTok{\%10s}\StringTok{ }\SpecialCharTok{\%10d}\StringTok{ }\SpecialCharTok{\%10.2f}\StringTok{ }\SpecialCharTok{\%10.2f}\StringTok{\textquotesingle{}} \OperatorTok{\%}\NormalTok{ row)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{exercise-3.2-creating-a-top-level-function-for-program-execution}{%
+\section{Exercise 3.2: Creating a top-level function for program
+execution}\label{exercise-3.2-creating-a-top-level-function-for-program-execution}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# report.py}
+\ImportTok{import}\NormalTok{ csv}
+
+\KeywordTok{def}\NormalTok{ read\_portfolio(filename):}
+    \CommentTok{\textquotesingle{}\textquotesingle{}\textquotesingle{}}
+\CommentTok{    Read a stock portfolio file into a list of dictionaries with keys}
+\CommentTok{    name, shares, and price.}
+\CommentTok{    \textquotesingle{}\textquotesingle{}\textquotesingle{}}
+\NormalTok{    portfolio }\OperatorTok{=}\NormalTok{ []}
+    \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(filename) }\ImportTok{as}\NormalTok{ f:}
+\NormalTok{        rows }\OperatorTok{=}\NormalTok{ csv.reader(f)}
+\NormalTok{        headers }\OperatorTok{=} \BuiltInTok{next}\NormalTok{(rows)}
+
+        \ControlFlowTok{for}\NormalTok{ row }\KeywordTok{in}\NormalTok{ rows:}
+\NormalTok{            record }\OperatorTok{=} \BuiltInTok{dict}\NormalTok{(}\BuiltInTok{zip}\NormalTok{(headers, row))}
+\NormalTok{            stock }\OperatorTok{=}\NormalTok{ \{}
+                \StringTok{\textquotesingle{}name\textquotesingle{}}\NormalTok{ : record[}\StringTok{\textquotesingle{}name\textquotesingle{}}\NormalTok{],}
+                \StringTok{\textquotesingle{}shares\textquotesingle{}}\NormalTok{ : }\BuiltInTok{int}\NormalTok{(record[}\StringTok{\textquotesingle{}shares\textquotesingle{}}\NormalTok{]),}
+                \StringTok{\textquotesingle{}price\textquotesingle{}}\NormalTok{ : }\BuiltInTok{float}\NormalTok{(record[}\StringTok{\textquotesingle{}price\textquotesingle{}}\NormalTok{])}
+\NormalTok{            \}}
+\NormalTok{            portfolio.append(stock)}
+
+    \ControlFlowTok{return}\NormalTok{ portfolio}
+
+\KeywordTok{def}\NormalTok{ read\_prices(filename):}
+    \CommentTok{\textquotesingle{}\textquotesingle{}\textquotesingle{}}
+\CommentTok{    Read a CSV file of price data into a dict mapping names to prices.}
+\CommentTok{    \textquotesingle{}\textquotesingle{}\textquotesingle{}}
+\NormalTok{    prices }\OperatorTok{=}\NormalTok{ \{\}}
+    \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(filename) }\ImportTok{as}\NormalTok{ f:}
+\NormalTok{        rows }\OperatorTok{=}\NormalTok{ csv.reader(f)}
+        \ControlFlowTok{for}\NormalTok{ row }\KeywordTok{in}\NormalTok{ rows:}
+            \ControlFlowTok{try}\NormalTok{:}
+\NormalTok{                prices[row[}\DecValTok{0}\NormalTok{]] }\OperatorTok{=} \BuiltInTok{float}\NormalTok{(row[}\DecValTok{1}\NormalTok{])}
+            \ControlFlowTok{except} \PreprocessorTok{IndexError}\NormalTok{:}
+                \ControlFlowTok{pass}
+
+    \ControlFlowTok{return}\NormalTok{ prices}
+
+\KeywordTok{def}\NormalTok{ make\_report\_data(portfolio,prices):}
+    \CommentTok{\textquotesingle{}\textquotesingle{}\textquotesingle{}}
+\CommentTok{    Make a list of (name, shares, price, change) tuples given a portfolio list}
+\CommentTok{    and prices dictionary.}
+\CommentTok{    \textquotesingle{}\textquotesingle{}\textquotesingle{}}
+\NormalTok{    rows }\OperatorTok{=}\NormalTok{ []}
+    \ControlFlowTok{for}\NormalTok{ stock }\KeywordTok{in}\NormalTok{ portfolio:}
+\NormalTok{        current\_price }\OperatorTok{=}\NormalTok{ prices[stock[}\StringTok{\textquotesingle{}name\textquotesingle{}}\NormalTok{]]}
+\NormalTok{        change }\OperatorTok{=}\NormalTok{ current\_price }\OperatorTok{{-}}\NormalTok{ stock[}\StringTok{\textquotesingle{}price\textquotesingle{}}\NormalTok{]}
+\NormalTok{        summary }\OperatorTok{=}\NormalTok{ (stock[}\StringTok{\textquotesingle{}name\textquotesingle{}}\NormalTok{], stock[}\StringTok{\textquotesingle{}shares\textquotesingle{}}\NormalTok{], current\_price, change)}
+\NormalTok{        rows.append(summary)}
+    \ControlFlowTok{return}\NormalTok{ rows}
+
+\KeywordTok{def}\NormalTok{ print\_report(reportdata):}
+    \CommentTok{\textquotesingle{}\textquotesingle{}\textquotesingle{}}
+\CommentTok{    Print a nicely formated table from a list of (name, shares, price, change) tuples.}
+\CommentTok{    \textquotesingle{}\textquotesingle{}\textquotesingle{}}
+\NormalTok{    headers }\OperatorTok{=}\NormalTok{ (}\StringTok{\textquotesingle{}Name\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Shares\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Price\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Change\textquotesingle{}}\NormalTok{)}
+    \BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}}\SpecialCharTok{\%10s}\StringTok{ }\SpecialCharTok{\%10s}\StringTok{ }\SpecialCharTok{\%10s}\StringTok{ }\SpecialCharTok{\%10s}\StringTok{\textquotesingle{}} \OperatorTok{\%}\NormalTok{ headers)}
+    \BuiltInTok{print}\NormalTok{((}\StringTok{\textquotesingle{}{-}\textquotesingle{}}\OperatorTok{*}\DecValTok{10} \OperatorTok{+} \StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{)}\OperatorTok{*}\BuiltInTok{len}\NormalTok{(headers))}
+    \ControlFlowTok{for}\NormalTok{ row }\KeywordTok{in}\NormalTok{ reportdata:}
+        \BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}}\SpecialCharTok{\%10s}\StringTok{ }\SpecialCharTok{\%10d}\StringTok{ }\SpecialCharTok{\%10.2f}\StringTok{ }\SpecialCharTok{\%10.2f}\StringTok{\textquotesingle{}} \OperatorTok{\%}\NormalTok{ row)}
+
+\KeywordTok{def}\NormalTok{ portfolio\_report(portfoliofile,pricefile):        }
+    \CommentTok{\textquotesingle{}\textquotesingle{}\textquotesingle{}}
+\CommentTok{    Make a stock report given portfolio and price data files.}
+\CommentTok{    \textquotesingle{}\textquotesingle{}\textquotesingle{}}
+    \CommentTok{\# Read data files }
+\NormalTok{    portfolio }\OperatorTok{=}\NormalTok{ read\_portfolio(portfoliofile)}
+\NormalTok{    prices }\OperatorTok{=}\NormalTok{ read\_prices(pricefile)}
+
+    \CommentTok{\# Create the report data}
+\NormalTok{    report }\OperatorTok{=}\NormalTok{ make\_report\_data(portfolio,prices)}
+
+    \CommentTok{\# Print it out}
+\NormalTok{    print\_report(report)}
+    
+\NormalTok{portfolio\_report(}\StringTok{\textquotesingle{}Data/portfolio.csv\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Data/prices.csv\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+      Name     Shares      Price     Change
+---------- ---------- ---------- ---------- 
+        AA        100       9.22     -22.98
+       IBM         50     106.28      15.18
+       CAT        150      35.46     -47.98
+      MSFT        200      20.89     -30.34
+        GE         95      13.48     -26.89
+      MSFT         50      20.89     -44.21
+       IBM        100     106.28      35.84
+\end{verbatim}
+
+\hypertarget{exercise-3.3-reading-csv-files}{%
+\section{Exercise 3.3: Reading CSV
+Files}\label{exercise-3.3-reading-csv-files}}
+
+Define this function:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# fileparse.py}
+\ImportTok{import}\NormalTok{ csv}
+
+\KeywordTok{def}\NormalTok{ parse\_csv(filename):}
+    \CommentTok{\textquotesingle{}\textquotesingle{}\textquotesingle{}}
+\CommentTok{    Parse a CSV file into a list of records}
+\CommentTok{    \textquotesingle{}\textquotesingle{}\textquotesingle{}}
+    \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(filename) }\ImportTok{as}\NormalTok{ f:}
+\NormalTok{        rows }\OperatorTok{=}\NormalTok{ csv.reader(f)}
+
+        \CommentTok{\# Read the file headers}
+\NormalTok{        headers }\OperatorTok{=} \BuiltInTok{next}\NormalTok{(rows)}
+\NormalTok{        records }\OperatorTok{=}\NormalTok{ []}
+        \ControlFlowTok{for}\NormalTok{ row }\KeywordTok{in}\NormalTok{ rows:}
+            \ControlFlowTok{if} \KeywordTok{not}\NormalTok{ row:    }\CommentTok{\# Skip rows with no data}
+                \ControlFlowTok{continue}
+\NormalTok{            record }\OperatorTok{=} \BuiltInTok{dict}\NormalTok{(}\BuiltInTok{zip}\NormalTok{(headers, row))}
+\NormalTok{            records.append(record)}
+
+    \ControlFlowTok{return}\NormalTok{ records}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{portfolio }\OperatorTok{=}\NormalTok{ parse\_csv(}\StringTok{\textquotesingle{}Data/portfolio.csv\textquotesingle{}}\NormalTok{)}
+\NormalTok{portfolio}
+
+\CommentTok{\# This function reads a CSV file into a list of dictionaries while}
+\CommentTok{\# hiding the details of opening the file, wrapping it with the csv module,}
+\CommentTok{\# ignoring blank lines, and so forth.}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[{'name': 'AA', 'shares': '100', 'price': '32.20'},
+ {'name': 'IBM', 'shares': '50', 'price': '91.10'},
+ {'name': 'CAT', 'shares': '150', 'price': '83.44'},
+ {'name': 'MSFT', 'shares': '200', 'price': '51.23'},
+ {'name': 'GE', 'shares': '95', 'price': '40.37'},
+ {'name': 'MSFT', 'shares': '50', 'price': '65.10'},
+ {'name': 'IBM', 'shares': '100', 'price': '70.44'}]
+\end{verbatim}
+
+\hypertarget{exercise-3.4-building-a-column-selector}{%
+\section{Exercise 3.4: Building a Column
+Selector}\label{exercise-3.4-building-a-column-selector}}
+
+Modify the parse\_csv() function so that it optionally allows
+user-specified columns to be picked out.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+        \ControlFlowTok{if}\NormalTok{ select:}
+\NormalTok{            indices }\OperatorTok{=}\NormalTok{ [headers.index(colname) }\ControlFlowTok{for}\NormalTok{ colname }\KeywordTok{in}\NormalTok{ select]}
+\NormalTok{            headers }\OperatorTok{=}\NormalTok{ select}
+        \ControlFlowTok{else}\NormalTok{:}
+\NormalTok{            indices }\OperatorTok{=}\NormalTok{ []}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ parse\_csv(filename, select}\OperatorTok{=}\VariableTok{None}\NormalTok{):}
+    \CommentTok{\textquotesingle{}\textquotesingle{}\textquotesingle{}}
+\CommentTok{    Parse a CSV file into a list of records}
+\CommentTok{    \textquotesingle{}\textquotesingle{}\textquotesingle{}}
+    \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(filename) }\ImportTok{as}\NormalTok{ f:}
+\NormalTok{        rows }\OperatorTok{=}\NormalTok{ csv.reader(f)}
+
+        \CommentTok{\# Read the file headers}
+\NormalTok{        headers }\OperatorTok{=} \BuiltInTok{next}\NormalTok{(rows)}
+
+        \CommentTok{\# If a column selector was given, find indices of the specified columns.}
+        \CommentTok{\# This maps the column selections to row indices.}
+        \CommentTok{\# Also narrow the set of headers used for resulting dictionaries.}
+        \ControlFlowTok{if}\NormalTok{ select:}
+\NormalTok{            indices }\OperatorTok{=}\NormalTok{ [headers.index(colname) }\ControlFlowTok{for}\NormalTok{ colname }\KeywordTok{in}\NormalTok{ select]}
+\NormalTok{            headers }\OperatorTok{=}\NormalTok{ select}
+        \ControlFlowTok{else}\NormalTok{:}
+\NormalTok{            indices }\OperatorTok{=}\NormalTok{ []}
+
+\NormalTok{        records }\OperatorTok{=}\NormalTok{ []}
+        \ControlFlowTok{for}\NormalTok{ row }\KeywordTok{in}\NormalTok{ rows:}
+            \ControlFlowTok{if} \KeywordTok{not}\NormalTok{ row:    }\CommentTok{\# Skip rows with no data}
+                \ControlFlowTok{continue}
+            \CommentTok{\# Filter the row if specific columns were selected}
+            \ControlFlowTok{if}\NormalTok{ indices:}
+\NormalTok{                row }\OperatorTok{=}\NormalTok{ [ row[index] }\ControlFlowTok{for}\NormalTok{ index }\KeywordTok{in}\NormalTok{ indices ]}
+
+            \CommentTok{\# Make a dictionary}
+\NormalTok{            record }\OperatorTok{=} \BuiltInTok{dict}\NormalTok{(}\BuiltInTok{zip}\NormalTok{(headers, row))}
+\NormalTok{            records.append(record)}
+
+    \ControlFlowTok{return}\NormalTok{ records}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{shares\_held }\OperatorTok{=}\NormalTok{ parse\_csv(}\StringTok{\textquotesingle{}Data/portfolio.csv\textquotesingle{}}\NormalTok{, select}\OperatorTok{=}\NormalTok{[}\StringTok{\textquotesingle{}name\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}shares\textquotesingle{}}\NormalTok{])}
+\NormalTok{shares\_held}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[{'name': 'AA', 'shares': '100'},
+ {'name': 'IBM', 'shares': '50'},
+ {'name': 'CAT', 'shares': '150'},
+ {'name': 'MSFT', 'shares': '200'},
+ {'name': 'GE', 'shares': '95'},
+ {'name': 'MSFT', 'shares': '50'},
+ {'name': 'IBM', 'shares': '100'}]
+\end{verbatim}
+
+\hypertarget{exercise-3.5-performing-type-conversion}{%
+\section{Exercise 3.5: Performing Type
+Conversion}\label{exercise-3.5-performing-type-conversion}}
+
+Modify the parse\_csv() function so that it optionally allows
+type-conversions to be applied to the returned data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ types:}
+\NormalTok{    row }\OperatorTok{=}\NormalTok{ [func(val) }\ControlFlowTok{for}\NormalTok{ func, val }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(types, row) ]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ parse\_csv(filename, select}\OperatorTok{=}\VariableTok{None}\NormalTok{, types}\OperatorTok{=}\VariableTok{None}\NormalTok{):}
+    \CommentTok{\textquotesingle{}\textquotesingle{}\textquotesingle{}}
+\CommentTok{    Parse a CSV file into a list of records}
+\CommentTok{    \textquotesingle{}\textquotesingle{}\textquotesingle{}}
+    \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(filename) }\ImportTok{as}\NormalTok{ f:}
+\NormalTok{        rows }\OperatorTok{=}\NormalTok{ csv.reader(f)}
+
+        \CommentTok{\# Read the file headers}
+\NormalTok{        headers }\OperatorTok{=} \BuiltInTok{next}\NormalTok{(rows)}
+
+        \CommentTok{\# If a column selector was given, find indices of the specified columns.}
+        \CommentTok{\# Also narrow the set of headers used for resulting dictionaries}
+        \ControlFlowTok{if}\NormalTok{ select:}
+\NormalTok{            indices }\OperatorTok{=}\NormalTok{ [headers.index(colname) }\ControlFlowTok{for}\NormalTok{ colname }\KeywordTok{in}\NormalTok{ select]}
+\NormalTok{            headers }\OperatorTok{=}\NormalTok{ select}
+        \ControlFlowTok{else}\NormalTok{:}
+\NormalTok{            indices }\OperatorTok{=}\NormalTok{ []}
+
+\NormalTok{        records }\OperatorTok{=}\NormalTok{ []}
+        \ControlFlowTok{for}\NormalTok{ row }\KeywordTok{in}\NormalTok{ rows:}
+            \ControlFlowTok{if} \KeywordTok{not}\NormalTok{ row:    }\CommentTok{\# Skip rows with no data}
+                \ControlFlowTok{continue}
+            
+            \CommentTok{\# Filter the row if specific columns were selected}
+            \ControlFlowTok{if}\NormalTok{ indices:}
+\NormalTok{                row }\OperatorTok{=}\NormalTok{ [ row[index] }\ControlFlowTok{for}\NormalTok{ index }\KeywordTok{in}\NormalTok{ indices ]}
+            
+            \CommentTok{\# func is an argument given to the function \textasciigrave{}identity\_decorator()\textasciigrave{}}
+            \CommentTok{\# zip an iterator of tuples where the items in each passed iterator are paired together}
+            \ControlFlowTok{if}\NormalTok{ types:}
+\NormalTok{                row }\OperatorTok{=}\NormalTok{ [func(val) }\ControlFlowTok{for}\NormalTok{ func, val }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(types, row) ]}
+
+            \CommentTok{\# Make a dictionary}
+\NormalTok{            record }\OperatorTok{=} \BuiltInTok{dict}\NormalTok{(}\BuiltInTok{zip}\NormalTok{(headers, row))}
+\NormalTok{            records.append(record)}
+
+    \ControlFlowTok{return}\NormalTok{ records}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{portfolio }\OperatorTok{=}\NormalTok{ parse\_csv(}\StringTok{\textquotesingle{}Data/portfolio.csv\textquotesingle{}}\NormalTok{, types}\OperatorTok{=}\NormalTok{[}\BuiltInTok{str}\NormalTok{, }\BuiltInTok{int}\NormalTok{, }\BuiltInTok{float}\NormalTok{])}
+\NormalTok{portfolio}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[{'name': 'AA', 'shares': 100, 'price': 32.2},
+ {'name': 'IBM', 'shares': 50, 'price': 91.1},
+ {'name': 'CAT', 'shares': 150, 'price': 83.44},
+ {'name': 'MSFT', 'shares': 200, 'price': 51.23},
+ {'name': 'GE', 'shares': 95, 'price': 40.37},
+ {'name': 'MSFT', 'shares': 50, 'price': 65.1},
+ {'name': 'IBM', 'shares': 100, 'price': 70.44}]
+\end{verbatim}
+
+\hypertarget{exercise-3.6-working-without-headers}{%
+\section{Exercise 3.6: Working without
+Headers}\label{exercise-3.6-working-without-headers}}
+
+Modify the parse\_csv() function so that it can work with such files by
+creating a list of tuples instead.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \ControlFlowTok{if}\NormalTok{ headers:}
+\NormalTok{        record }\OperatorTok{=} \BuiltInTok{dict}\NormalTok{(}\BuiltInTok{zip}\NormalTok{(headers, row))}
+    \ControlFlowTok{else}\NormalTok{:}
+\NormalTok{        record }\OperatorTok{=} \BuiltInTok{tuple}\NormalTok{(row)}
+\NormalTok{        records.append(record)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# fileparse.py}
+\ImportTok{import}\NormalTok{ csv}
+
+\KeywordTok{def}\NormalTok{ parse\_csv(filename, select}\OperatorTok{=}\VariableTok{None}\NormalTok{, types}\OperatorTok{=}\VariableTok{None}\NormalTok{, has\_headers}\OperatorTok{=}\VariableTok{True}\NormalTok{, delimiter}\OperatorTok{=}\StringTok{\textquotesingle{},\textquotesingle{}}\NormalTok{):}
+    \CommentTok{\textquotesingle{}\textquotesingle{}\textquotesingle{}}
+\CommentTok{    Parse a CSV file into a list of records with type conversion.}
+\CommentTok{    \textquotesingle{}\textquotesingle{}\textquotesingle{}}
+    \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(filename) }\ImportTok{as}\NormalTok{ f:}
+\NormalTok{        rows }\OperatorTok{=}\NormalTok{ csv.reader(f, delimiter}\OperatorTok{=}\NormalTok{delimiter)}
+
+        \CommentTok{\# If has headers, use next(rows), otherwise blank}
+        \CommentTok{\# The next() function returns the next item in an iterator.}
+        \ControlFlowTok{if}\NormalTok{ has\_headers:}
+\NormalTok{            headers }\OperatorTok{=} \BuiltInTok{next}\NormalTok{(rows)}
+        \ControlFlowTok{else}\NormalTok{:}
+\NormalTok{            headers }\OperatorTok{=}\NormalTok{ []}
+
+        \CommentTok{\# If specific columns have been selected, make indices for filtering }
+        \ControlFlowTok{if}\NormalTok{ select:}
+\NormalTok{            indices }\OperatorTok{=}\NormalTok{ [ headers.index(colname) }\ControlFlowTok{for}\NormalTok{ colname }\KeywordTok{in}\NormalTok{ select ]}
+\NormalTok{            headers }\OperatorTok{=}\NormalTok{ select}
+
+\NormalTok{        records }\OperatorTok{=}\NormalTok{ []}
+        \ControlFlowTok{for}\NormalTok{ row }\KeywordTok{in}\NormalTok{ rows:}
+            \ControlFlowTok{if} \KeywordTok{not}\NormalTok{ row:     }\CommentTok{\# Skip rows with no data}
+                \ControlFlowTok{continue}
+
+            \CommentTok{\# If specific column indices are selected, pick them out}
+            \ControlFlowTok{if}\NormalTok{ select:}
+\NormalTok{                row }\OperatorTok{=}\NormalTok{ [ row[index] }\ControlFlowTok{for}\NormalTok{ index }\KeywordTok{in}\NormalTok{ indices]}
+
+            \CommentTok{\# Apply type conversion to the row}
+            \ControlFlowTok{if}\NormalTok{ types:}
+\NormalTok{                row }\OperatorTok{=}\NormalTok{ [func(val) }\ControlFlowTok{for}\NormalTok{ func, val }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(types, row)]}
+
+            \CommentTok{\# Make a dictionary or a tuple}
+            \ControlFlowTok{if}\NormalTok{ headers:}
+\NormalTok{                record }\OperatorTok{=} \BuiltInTok{dict}\NormalTok{(}\BuiltInTok{zip}\NormalTok{(headers, row))}
+            \ControlFlowTok{else}\NormalTok{:}
+\NormalTok{                record }\OperatorTok{=} \BuiltInTok{tuple}\NormalTok{(row)}
+\NormalTok{            records.append(record)}
+
+        \ControlFlowTok{return}\NormalTok{ records}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{prices }\OperatorTok{=}\NormalTok{ parse\_csv(}\StringTok{\textquotesingle{}Data/prices.csv\textquotesingle{}}\NormalTok{, types}\OperatorTok{=}\NormalTok{[}\BuiltInTok{str}\NormalTok{,}\BuiltInTok{float}\NormalTok{], has\_headers}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+\NormalTok{prices}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[('AA', 9.22),
+ ('AXP', 24.85),
+ ('BA', 44.85),
+ ('BAC', 11.27),
+ ('C', 3.72),
+ ('CAT', 35.46),
+ ('CVX', 66.67),
+ ('DD', 28.47),
+ ('DIS', 24.22),
+ ('GE', 13.48),
+ ('GM', 0.75),
+ ('HD', 23.16),
+ ('HPQ', 34.35),
+ ('IBM', 106.28),
+ ('INTC', 15.72),
+ ('JNJ', 55.16),
+ ('JPM', 36.9),
+ ('KFT', 26.11),
+ ('KO', 49.16),
+ ('MCD', 58.99),
+ ('MMM', 57.1),
+ ('MRK', 27.58),
+ ('MSFT', 20.89),
+ ('PFE', 15.19),
+ ('PG', 51.94),
+ ('T', 24.79),
+ ('UTX', 52.61),
+ ('VZ', 29.26),
+ ('WMT', 49.74),
+ ('XOM', 69.35)]
+\end{verbatim}
+
+\hypertarget{exercise-3.7-picking-a-different-column-delimitier}{%
+\section{Exercise 3.7: Picking a different column
+delimitier}\label{exercise-3.7-picking-a-different-column-delimitier}}
+
+Modify your parse\_csv() function so that it also allows the delimiter
+to be changed.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{delimiter}\OperatorTok{=}\StringTok{\textquotesingle{},\textquotesingle{}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# fileparse.py}
+\ImportTok{import}\NormalTok{ csv}
+
+\KeywordTok{def}\NormalTok{ parse\_csv(filename, select}\OperatorTok{=}\VariableTok{None}\NormalTok{, types}\OperatorTok{=}\VariableTok{None}\NormalTok{, has\_headers}\OperatorTok{=}\VariableTok{True}\NormalTok{, delimiter}\OperatorTok{=}\StringTok{\textquotesingle{},\textquotesingle{}}\NormalTok{):}
+    \CommentTok{\textquotesingle{}\textquotesingle{}\textquotesingle{}}
+\CommentTok{    Parse a CSV file into a list of records with type conversion.}
+\CommentTok{    \textquotesingle{}\textquotesingle{}\textquotesingle{}}
+    \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(filename) }\ImportTok{as}\NormalTok{ f:}
+\NormalTok{        rows }\OperatorTok{=}\NormalTok{ csv.reader(f, delimiter}\OperatorTok{=}\NormalTok{delimiter)}
+
+        \CommentTok{\# If has headers, use next(rows), otherwise blank}
+        \ControlFlowTok{if}\NormalTok{ has\_headers:}
+\NormalTok{            headers }\OperatorTok{=} \BuiltInTok{next}\NormalTok{(rows)}
+        \ControlFlowTok{else}\NormalTok{:}
+\NormalTok{            headers }\OperatorTok{=}\NormalTok{ []}
+
+        \CommentTok{\# If specific columns have been selected, make indices for filtering }
+        \ControlFlowTok{if}\NormalTok{ select:}
+\NormalTok{            indices }\OperatorTok{=}\NormalTok{ [ headers.index(colname) }\ControlFlowTok{for}\NormalTok{ colname }\KeywordTok{in}\NormalTok{ select ]}
+\NormalTok{            headers }\OperatorTok{=}\NormalTok{ select}
+
+\NormalTok{        records }\OperatorTok{=}\NormalTok{ []}
+        \ControlFlowTok{for}\NormalTok{ row }\KeywordTok{in}\NormalTok{ rows:}
+            \ControlFlowTok{if} \KeywordTok{not}\NormalTok{ row:     }\CommentTok{\# Skip rows with no data}
+                \ControlFlowTok{continue}
+
+            \CommentTok{\# If specific column indices are selected, pick them out}
+            \ControlFlowTok{if}\NormalTok{ select:}
+\NormalTok{                row }\OperatorTok{=}\NormalTok{ [ row[index] }\ControlFlowTok{for}\NormalTok{ index }\KeywordTok{in}\NormalTok{ indices]}
+
+            \CommentTok{\# Apply type conversion to the row}
+            \ControlFlowTok{if}\NormalTok{ types:}
+\NormalTok{                row }\OperatorTok{=}\NormalTok{ [func(val) }\ControlFlowTok{for}\NormalTok{ func, val }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(types, row)]}
+
+            \CommentTok{\# Make a dictionary or a tuple}
+            \ControlFlowTok{if}\NormalTok{ headers:}
+\NormalTok{                record }\OperatorTok{=} \BuiltInTok{dict}\NormalTok{(}\BuiltInTok{zip}\NormalTok{(headers, row))}
+            \ControlFlowTok{else}\NormalTok{:}
+\NormalTok{                record }\OperatorTok{=} \BuiltInTok{tuple}\NormalTok{(row)}
+\NormalTok{            records.append(record)}
+
+        \ControlFlowTok{return}\NormalTok{ records}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{exercise-3.8-raising-exceptions}{%
+\section{Exercise 3.8: Raising
+exceptions}\label{exercise-3.8-raising-exceptions}}
+
+Modify the code so that an exception gets raised if both the select and
+has\_headers=False arguments are passed.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \ControlFlowTok{if}\NormalTok{ select }\KeywordTok{and} \KeywordTok{not}\NormalTok{ has\_headers:}
+        \ControlFlowTok{raise} \PreprocessorTok{RuntimeError}\NormalTok{(}\StringTok{\textquotesingle{}select requires column headers\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# fileparse.py}
+\ImportTok{import}\NormalTok{ csv}
+
+\KeywordTok{def}\NormalTok{ parse\_csv(filename, select}\OperatorTok{=}\VariableTok{None}\NormalTok{, types}\OperatorTok{=}\VariableTok{None}\NormalTok{, has\_headers}\OperatorTok{=}\VariableTok{True}\NormalTok{, delimiter}\OperatorTok{=}\StringTok{\textquotesingle{},\textquotesingle{}}\NormalTok{):}
+    \CommentTok{\textquotesingle{}\textquotesingle{}\textquotesingle{}}
+\CommentTok{    Parse a CSV file into a list of records with type conversion.}
+\CommentTok{    \textquotesingle{}\textquotesingle{}\textquotesingle{}}
+    \ControlFlowTok{if}\NormalTok{ select }\KeywordTok{and} \KeywordTok{not}\NormalTok{ has\_headers:}
+        \ControlFlowTok{raise} \PreprocessorTok{RuntimeError}\NormalTok{(}\StringTok{\textquotesingle{}select requires column headers\textquotesingle{}}\NormalTok{)}
+        
+    \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(filename) }\ImportTok{as}\NormalTok{ f:}
+\NormalTok{        rows }\OperatorTok{=}\NormalTok{ csv.reader(f, delimiter}\OperatorTok{=}\NormalTok{delimiter)}
+
+        \CommentTok{\# If has headers, use next(rows), otherwise blank}
+        \ControlFlowTok{if}\NormalTok{ has\_headers:}
+\NormalTok{            headers }\OperatorTok{=} \BuiltInTok{next}\NormalTok{(rows)}
+        \ControlFlowTok{else}\NormalTok{:}
+\NormalTok{            headers }\OperatorTok{=}\NormalTok{ []}
+
+        \CommentTok{\# If specific columns have been selected, make indices for filtering }
+        \ControlFlowTok{if}\NormalTok{ select:}
+\NormalTok{            indices }\OperatorTok{=}\NormalTok{ [ headers.index(colname) }\ControlFlowTok{for}\NormalTok{ colname }\KeywordTok{in}\NormalTok{ select ]}
+\NormalTok{            headers }\OperatorTok{=}\NormalTok{ select}
+
+\NormalTok{        records }\OperatorTok{=}\NormalTok{ []}
+        \ControlFlowTok{for}\NormalTok{ row }\KeywordTok{in}\NormalTok{ rows:}
+            \ControlFlowTok{if} \KeywordTok{not}\NormalTok{ row:     }\CommentTok{\# Skip rows with no data}
+                \ControlFlowTok{continue}
+
+            \CommentTok{\# If specific column indices are selected, pick them out}
+            \ControlFlowTok{if}\NormalTok{ select:}
+\NormalTok{                row }\OperatorTok{=}\NormalTok{ [ row[index] }\ControlFlowTok{for}\NormalTok{ index }\KeywordTok{in}\NormalTok{ indices]}
+
+            \CommentTok{\# Apply type conversion to the row}
+            \ControlFlowTok{if}\NormalTok{ types:}
+\NormalTok{                row }\OperatorTok{=}\NormalTok{ [func(val) }\ControlFlowTok{for}\NormalTok{ func, val }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(types, row)]}
+
+            \CommentTok{\# Make a dictionary or a tuple}
+            \ControlFlowTok{if}\NormalTok{ headers:}
+\NormalTok{                record }\OperatorTok{=} \BuiltInTok{dict}\NormalTok{(}\BuiltInTok{zip}\NormalTok{(headers, row))}
+            \ControlFlowTok{else}\NormalTok{:}
+\NormalTok{                record }\OperatorTok{=} \BuiltInTok{tuple}\NormalTok{(row)}
+\NormalTok{            records.append(record)}
+
+        \ControlFlowTok{return}\NormalTok{ records}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{exercise-3.9-catching-exceptions}{%
+\section{Exercise 3.9: Catching
+exceptions}\label{exercise-3.9-catching-exceptions}}
+
+Modify the parse\_csv() function to catch all ValueError exceptions
+generated during record creation and print a warning message for rows
+that can't be converted.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ types:}
+    \ControlFlowTok{try}\NormalTok{:}
+\NormalTok{        row }\OperatorTok{=}\NormalTok{ [func(val) }\ControlFlowTok{for}\NormalTok{ func, val }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(types, row)]}
+    \ControlFlowTok{except} \PreprocessorTok{ValueError} \ImportTok{as}\NormalTok{ e:}
+        \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Row }\SpecialCharTok{\{}\NormalTok{rowno}\SpecialCharTok{\}}\SpecialStringTok{: Couldn\textquotesingle{}t convert }\SpecialCharTok{\{}\NormalTok{row}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+        \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Row }\SpecialCharTok{\{}\NormalTok{rowno}\SpecialCharTok{\}}\SpecialStringTok{: Reason }\SpecialCharTok{\{}\NormalTok{e}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+    \ControlFlowTok{continue}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# fileparse.py}
+\ImportTok{import}\NormalTok{ csv}
+
+\KeywordTok{def}\NormalTok{ parse\_csv(filename, select}\OperatorTok{=}\VariableTok{None}\NormalTok{, types}\OperatorTok{=}\VariableTok{None}\NormalTok{, has\_headers}\OperatorTok{=}\VariableTok{True}\NormalTok{, delimiter}\OperatorTok{=}\StringTok{\textquotesingle{},\textquotesingle{}}\NormalTok{):}
+    \CommentTok{\textquotesingle{}\textquotesingle{}\textquotesingle{}}
+\CommentTok{    Parse a CSV file into a list of records with type conversion.}
+\CommentTok{    \textquotesingle{}\textquotesingle{}\textquotesingle{}}
+    \ControlFlowTok{if}\NormalTok{ select }\KeywordTok{and} \KeywordTok{not}\NormalTok{ has\_headers:}
+        \ControlFlowTok{raise} \PreprocessorTok{RuntimeError}\NormalTok{(}\StringTok{\textquotesingle{}select requires column headers\textquotesingle{}}\NormalTok{)}
+        
+    \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(filename) }\ImportTok{as}\NormalTok{ f:}
+\NormalTok{        rows }\OperatorTok{=}\NormalTok{ csv.reader(f, delimiter}\OperatorTok{=}\NormalTok{delimiter)}
+
+        \CommentTok{\# If has headers, use next(rows), otherwise blank}
+        \ControlFlowTok{if}\NormalTok{ has\_headers:}
+\NormalTok{            headers }\OperatorTok{=} \BuiltInTok{next}\NormalTok{(rows)}
+        \ControlFlowTok{else}\NormalTok{:}
+\NormalTok{            headers }\OperatorTok{=}\NormalTok{ []}
+
+        \CommentTok{\# If specific columns have been selected, make indices for filtering }
+        \ControlFlowTok{if}\NormalTok{ select:}
+\NormalTok{            indices }\OperatorTok{=}\NormalTok{ [ headers.index(colname) }\ControlFlowTok{for}\NormalTok{ colname }\KeywordTok{in}\NormalTok{ select ]}
+\NormalTok{            headers }\OperatorTok{=}\NormalTok{ select}
+
+\NormalTok{        records }\OperatorTok{=}\NormalTok{ []}
+        \ControlFlowTok{for}\NormalTok{ row }\KeywordTok{in}\NormalTok{ rows:}
+            \ControlFlowTok{if} \KeywordTok{not}\NormalTok{ row:     }\CommentTok{\# Skip rows with no data}
+                \ControlFlowTok{continue}
+
+            \CommentTok{\# If specific column indices are selected, pick them out}
+            \ControlFlowTok{if}\NormalTok{ select:}
+\NormalTok{                row }\OperatorTok{=}\NormalTok{ [ row[index] }\ControlFlowTok{for}\NormalTok{ index }\KeywordTok{in}\NormalTok{ indices]}
+
+            \CommentTok{\# Apply type conversion to the row}
+            \ControlFlowTok{if}\NormalTok{ types:}
+\NormalTok{                row }\OperatorTok{=}\NormalTok{ [func(val) }\ControlFlowTok{for}\NormalTok{ func, val }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(types, row)]}
+        
+            \ControlFlowTok{if}\NormalTok{ types:}
+                \ControlFlowTok{try}\NormalTok{:}
+\NormalTok{                    row }\OperatorTok{=}\NormalTok{ [func(val) }\ControlFlowTok{for}\NormalTok{ func, val }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(types, row)]}
+                \ControlFlowTok{except} \PreprocessorTok{ValueError} \ImportTok{as}\NormalTok{ e:}
+                        \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Row }\SpecialCharTok{\{}\NormalTok{rowno}\SpecialCharTok{\}}\SpecialStringTok{: Couldn\textquotesingle{}t convert }\SpecialCharTok{\{}\NormalTok{row}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+                        \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Row }\SpecialCharTok{\{}\NormalTok{rowno}\SpecialCharTok{\}}\SpecialStringTok{: Reason }\SpecialCharTok{\{}\NormalTok{e}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+                    \ControlFlowTok{continue}
+
+            \CommentTok{\# Make a dictionary or a tuple}
+            \ControlFlowTok{if}\NormalTok{ headers:}
+\NormalTok{                record }\OperatorTok{=} \BuiltInTok{dict}\NormalTok{(}\BuiltInTok{zip}\NormalTok{(headers, row))}
+            \ControlFlowTok{else}\NormalTok{:}
+\NormalTok{                record }\OperatorTok{=} \BuiltInTok{tuple}\NormalTok{(row)}
+\NormalTok{            records.append(record)}
+
+        \ControlFlowTok{return}\NormalTok{ records}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+IndentationError: unindent does not match any outer indentation level (<tokenize>, line 44)
+\end{verbatim}
+
+\hypertarget{exercise-3.10-silencing-errors}{%
+\section{Exercise 3.10: Silencing
+Errors}\label{exercise-3.10-silencing-errors}}
+
+Modify the parse\_csv() function so that parsing error messages can be
+silenced if explicitly desired by the user.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+        \ControlFlowTok{if}\NormalTok{ types:}
+                \ControlFlowTok{try}\NormalTok{:}
+\NormalTok{                    row }\OperatorTok{=}\NormalTok{ [func(val) }\ControlFlowTok{for}\NormalTok{ func, val }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(types, row)]}
+                \ControlFlowTok{except} \PreprocessorTok{ValueError} \ImportTok{as}\NormalTok{ e:}
+                    \ControlFlowTok{if} \KeywordTok{not}\NormalTok{ silence\_errors:}
+                        \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Row }\SpecialCharTok{\{}\NormalTok{rowno}\SpecialCharTok{\}}\SpecialStringTok{: Couldn\textquotesingle{}t convert }\SpecialCharTok{\{}\NormalTok{row}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+                        \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Row }\SpecialCharTok{\{}\NormalTok{rowno}\SpecialCharTok{\}}\SpecialStringTok{: Reason }\SpecialCharTok{\{}\NormalTok{e}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+                    \ControlFlowTok{continue}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# fileparse.py}
+\ImportTok{import}\NormalTok{ csv}
+
+\KeywordTok{def}\NormalTok{ parse\_csv(filename, select}\OperatorTok{=}\VariableTok{None}\NormalTok{, types}\OperatorTok{=}\VariableTok{None}\NormalTok{, has\_headers}\OperatorTok{=}\VariableTok{True}\NormalTok{, delimiter}\OperatorTok{=}\StringTok{\textquotesingle{},\textquotesingle{}}\NormalTok{, silence\_errors}\OperatorTok{=}\VariableTok{False}\NormalTok{):}
+    \CommentTok{\textquotesingle{}\textquotesingle{}\textquotesingle{}}
+\CommentTok{    Parse a CSV file into a list of records with type conversion.}
+\CommentTok{    \textquotesingle{}\textquotesingle{}\textquotesingle{}}
+    \ControlFlowTok{if}\NormalTok{ select }\KeywordTok{and} \KeywordTok{not}\NormalTok{ has\_headers:}
+        \ControlFlowTok{raise} \PreprocessorTok{RuntimeError}\NormalTok{(}\StringTok{\textquotesingle{}select requires column headers\textquotesingle{}}\NormalTok{)}
+        
+    \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(filename) }\ImportTok{as}\NormalTok{ f:}
+\NormalTok{        rows }\OperatorTok{=}\NormalTok{ csv.reader(f, delimiter}\OperatorTok{=}\NormalTok{delimiter)}
+
+        \CommentTok{\# If has headers, use next(rows), otherwise blank}
+        \ControlFlowTok{if}\NormalTok{ has\_headers:}
+\NormalTok{            headers }\OperatorTok{=} \BuiltInTok{next}\NormalTok{(rows)}
+        \ControlFlowTok{else}\NormalTok{:}
+\NormalTok{            headers }\OperatorTok{=}\NormalTok{ []}
+
+        \CommentTok{\# If specific columns have been selected, make indices for filtering }
+        \ControlFlowTok{if}\NormalTok{ select:}
+\NormalTok{            indices }\OperatorTok{=}\NormalTok{ [ headers.index(colname) }\ControlFlowTok{for}\NormalTok{ colname }\KeywordTok{in}\NormalTok{ select ]}
+\NormalTok{            headers }\OperatorTok{=}\NormalTok{ select}
+
+\NormalTok{        records }\OperatorTok{=}\NormalTok{ []}
+        \ControlFlowTok{for}\NormalTok{ row }\KeywordTok{in}\NormalTok{ rows:}
+            \ControlFlowTok{if} \KeywordTok{not}\NormalTok{ row:     }\CommentTok{\# Skip rows with no data}
+                \ControlFlowTok{continue}
+
+            \CommentTok{\# If specific column indices are selected, pick them out}
+            \ControlFlowTok{if}\NormalTok{ select:}
+\NormalTok{                row }\OperatorTok{=}\NormalTok{ [ row[index] }\ControlFlowTok{for}\NormalTok{ index }\KeywordTok{in}\NormalTok{ indices]}
+
+            \CommentTok{\# Apply type conversion to the row}
+            \ControlFlowTok{if}\NormalTok{ types:}
+\NormalTok{                row }\OperatorTok{=}\NormalTok{ [func(val) }\ControlFlowTok{for}\NormalTok{ func, val }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(types, row)]}
+        
+            \ControlFlowTok{if}\NormalTok{ types:}
+                \ControlFlowTok{try}\NormalTok{:}
+\NormalTok{                    row }\OperatorTok{=}\NormalTok{ [func(val) }\ControlFlowTok{for}\NormalTok{ func, val }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(types, row)]}
+                \ControlFlowTok{except} \PreprocessorTok{ValueError} \ImportTok{as}\NormalTok{ e:}
+                    \ControlFlowTok{if} \KeywordTok{not}\NormalTok{ silence\_errors:}
+                        \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Row }\SpecialCharTok{\{}\NormalTok{rowno}\SpecialCharTok{\}}\SpecialStringTok{: Couldn\textquotesingle{}t convert }\SpecialCharTok{\{}\NormalTok{row}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+                        \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Row }\SpecialCharTok{\{}\NormalTok{rowno}\SpecialCharTok{\}}\SpecialStringTok{: Reason }\SpecialCharTok{\{}\NormalTok{e}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+                    \ControlFlowTok{continue}
+
+            \CommentTok{\# Make a dictionary or a tuple}
+            \ControlFlowTok{if}\NormalTok{ headers:}
+\NormalTok{                record }\OperatorTok{=} \BuiltInTok{dict}\NormalTok{(}\BuiltInTok{zip}\NormalTok{(headers, row))}
+            \ControlFlowTok{else}\NormalTok{:}
+\NormalTok{                record }\OperatorTok{=} \BuiltInTok{tuple}\NormalTok{(row)}
+\NormalTok{            records.append(record)}
+
+        \ControlFlowTok{return}\NormalTok{ records}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{exercise-3.11-module-imports}{%
+\section{Exercise 3.11: Module
+imports}\label{exercise-3.11-module-imports}}
+
+cd Work python import fileparse Ctrl+D cd ../ python portfolio =
+fileparse.parse\_csv(`Data/portfolio.csv',select={[}`name',`shares',`price'{]},
+types={[}str,int,float{]})
 
 \part{Examples}
 
